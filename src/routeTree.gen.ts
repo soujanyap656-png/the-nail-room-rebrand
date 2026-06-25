@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as LocationsBookRouteImport } from './routes/locations-book'
+import { Route as GalleryBlogsRouteImport } from './routes/gallery-blogs'
+import { Route as AboutReviewsRouteImport } from './routes/about-reviews'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsBookRoute = LocationsBookRouteImport.update({
+  id: '/locations-book',
+  path: '/locations-book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryBlogsRoute = GalleryBlogsRouteImport.update({
+  id: '/gallery-blogs',
+  path: '/gallery-blogs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutReviewsRoute = AboutReviewsRouteImport.update({
+  id: '/about-reviews',
+  path: '/about-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,88 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-reviews': typeof AboutReviewsRoute
+  '/gallery-blogs': typeof GalleryBlogsRoute
+  '/locations-book': typeof LocationsBookRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-reviews': typeof AboutReviewsRoute
+  '/gallery-blogs': typeof GalleryBlogsRoute
+  '/locations-book': typeof LocationsBookRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-reviews': typeof AboutReviewsRoute
+  '/gallery-blogs': typeof GalleryBlogsRoute
+  '/locations-book': typeof LocationsBookRoute
+  '/services': typeof ServicesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about-reviews'
+    | '/gallery-blogs'
+    | '/locations-book'
+    | '/services'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about-reviews'
+    | '/gallery-blogs'
+    | '/locations-book'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about-reviews'
+    | '/gallery-blogs'
+    | '/locations-book'
+    | '/services'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutReviewsRoute: typeof AboutReviewsRoute
+  GalleryBlogsRoute: typeof GalleryBlogsRoute
+  LocationsBookRoute: typeof LocationsBookRoute
+  ServicesRoute: typeof ServicesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations-book': {
+      id: '/locations-book'
+      path: '/locations-book'
+      fullPath: '/locations-book'
+      preLoaderRoute: typeof LocationsBookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery-blogs': {
+      id: '/gallery-blogs'
+      path: '/gallery-blogs'
+      fullPath: '/gallery-blogs'
+      preLoaderRoute: typeof GalleryBlogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-reviews': {
+      id: '/about-reviews'
+      path: '/about-reviews'
+      fullPath: '/about-reviews'
+      preLoaderRoute: typeof AboutReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +137,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutReviewsRoute: AboutReviewsRoute,
+  GalleryBlogsRoute: GalleryBlogsRoute,
+  LocationsBookRoute: LocationsBookRoute,
+  ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
