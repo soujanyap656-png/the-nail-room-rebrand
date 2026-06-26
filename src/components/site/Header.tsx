@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About & Gallery" },
+  { to: "/about", label: "About Us" },
   { to: "/contact", label: "Contact" },
   { to: "/faq", label: "FAQ" },
   { to: "/terms", label: "Terms" },
@@ -19,15 +19,15 @@ export function Header() {
         style={{
           position: "fixed",
           top: 0, left: 0, right: 0, zIndex: 1000, height: 76,
-          background: "rgba(7,4,15,0.78)",
+          background: "rgba(7,4,15,0.82)",
           backdropFilter: "blur(18px) saturate(160%)",
-          borderBottom: "1px solid rgba(230,199,112,0.25)",
+          borderBottom: "1px solid rgba(230,199,112,0.28)",
         }}
         className="flex items-center justify-between px-[5%]"
       >
         <Link to="/" className="flex items-center gap-3">
           <span style={{ fontFamily: "var(--font-display)", fontSize: "1.55rem", fontWeight: 400 }} className="gold-gradient">
-            The Nail Room
+            Nail Room
           </span>
           <span style={{ width: 1, height: 20, background: "var(--color-gold)", opacity: 0.55 }} />
           <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--color-mist)" }}>
@@ -35,15 +35,17 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-10">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
+              className="hover:text-amber-200"
               style={{
-                fontFamily: "var(--font-sans)", fontSize: "0.7rem",
-                letterSpacing: "0.24em", textTransform: "uppercase",
-                color: "var(--color-mist)", transition: "color 0.3s ease",
+                fontFamily: "var(--font-sans)", fontSize: "0.78rem",
+                letterSpacing: "0.22em", textTransform: "uppercase",
+                color: "var(--color-ivory)", fontWeight: 400,
+                transition: "color 0.3s ease",
               }}
               activeProps={{ style: { color: "var(--color-gold-bright)" } }}
             >
@@ -53,7 +55,7 @@ export function Header() {
         </nav>
 
         <Link to="/contact" className="hidden lg:inline-flex btn-ghost-gold" style={{ padding: "10px 22px", fontSize: "0.65rem" }}>
-          Reserve →
+          Book →
         </Link>
 
         <button
@@ -76,7 +78,7 @@ export function Header() {
           }}
         >
           <div className="flex items-center justify-between mb-12">
-            <span style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem" }} className="gold-gradient">The Nail Room</span>
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem" }} className="gold-gradient">Nail Room</span>
             <button aria-label="Close menu" onClick={() => setOpen(false)} style={{ color: "var(--color-gold-bright)", fontSize: "1.8rem", padding: 8 }}>×</button>
           </div>
           <nav className="flex flex-col gap-6">
@@ -99,7 +101,7 @@ export function Header() {
           </nav>
           <div className="mt-auto pt-8">
             <Link to="/contact" onClick={() => setOpen(false)} className="btn-gold" style={{ width: "100%" }}>
-              Reserve Your Visit →
+              Book Appointment →
             </Link>
           </div>
         </div>
