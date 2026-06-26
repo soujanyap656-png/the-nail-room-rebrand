@@ -9,30 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as LocationsBookRouteImport } from './routes/locations-book'
-import { Route as GalleryBlogsRouteImport } from './routes/gallery-blogs'
-import { Route as AboutReviewsRouteImport } from './routes/about-reviews'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LocationsBookRoute = LocationsBookRouteImport.update({
-  id: '/locations-book',
-  path: '/locations-book',
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GalleryBlogsRoute = GalleryBlogsRouteImport.update({
-  id: '/gallery-blogs',
-  path: '/gallery-blogs',
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutReviewsRoute = AboutReviewsRouteImport.update({
-  id: '/about-reviews',
-  path: '/about-reviews',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,86 +49,81 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about-reviews': typeof AboutReviewsRoute
-  '/gallery-blogs': typeof GalleryBlogsRoute
-  '/locations-book': typeof LocationsBookRoute
-  '/services': typeof ServicesRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about-reviews': typeof AboutReviewsRoute
-  '/gallery-blogs': typeof GalleryBlogsRoute
-  '/locations-book': typeof LocationsBookRoute
-  '/services': typeof ServicesRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about-reviews': typeof AboutReviewsRoute
-  '/gallery-blogs': typeof GalleryBlogsRoute
-  '/locations-book': typeof LocationsBookRoute
-  '/services': typeof ServicesRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about-reviews'
-    | '/gallery-blogs'
-    | '/locations-book'
-    | '/services'
+  fullPaths: '/' | '/about' | '/contact' | '/faq' | '/privacy' | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about-reviews'
-    | '/gallery-blogs'
-    | '/locations-book'
-    | '/services'
-  id:
-    | '__root__'
-    | '/'
-    | '/about-reviews'
-    | '/gallery-blogs'
-    | '/locations-book'
-    | '/services'
+  to: '/' | '/about' | '/contact' | '/faq' | '/privacy' | '/terms'
+  id: '__root__' | '/' | '/about' | '/contact' | '/faq' | '/privacy' | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutReviewsRoute: typeof AboutReviewsRoute
-  GalleryBlogsRoute: typeof GalleryBlogsRoute
-  LocationsBookRoute: typeof LocationsBookRoute
-  ServicesRoute: typeof ServicesRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/locations-book': {
-      id: '/locations-book'
-      path: '/locations-book'
-      fullPath: '/locations-book'
-      preLoaderRoute: typeof LocationsBookRouteImport
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/gallery-blogs': {
-      id: '/gallery-blogs'
-      path: '/gallery-blogs'
-      fullPath: '/gallery-blogs'
-      preLoaderRoute: typeof GalleryBlogsRouteImport
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about-reviews': {
-      id: '/about-reviews'
-      path: '/about-reviews'
-      fullPath: '/about-reviews'
-      preLoaderRoute: typeof AboutReviewsRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -137,10 +138,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutReviewsRoute: AboutReviewsRoute,
-  GalleryBlogsRoute: GalleryBlogsRoute,
-  LocationsBookRoute: LocationsBookRoute,
-  ServicesRoute: ServicesRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

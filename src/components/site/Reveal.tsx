@@ -1,27 +1,27 @@
 import { useEffect, useRef, type ReactNode } from "react";
 
-export function Reveal({ children, delay = 0, as: As = "div", className = "", style }: { children: ReactNode; delay?: number; as?: any; className?: string; style?: React.CSSProperties }) {
-  const ref = useRef<HTMLElement | null>(null);
+export function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            (e.target as HTMLElement).classList.add("is-visible");
-            io.unobserve(e.target);
-          }
-        });
+      ([e]) => {
+        if (e.isIntersecting) {
+          el.classList.add("is-visible");
+          io.disconnect();
+        }
       },
-      { threshold: 0.12 }
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
   return (
-    <As ref={ref as any} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms`, ...style }}>
+    <div ref={ref} className="reveal" style={{ transitionDelay: `${delay}ms` }}>
       {children}
-    </As>
+    </div>
   );
 }
