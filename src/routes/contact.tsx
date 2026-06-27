@@ -7,18 +7,20 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact & Book — The Nail Room Bangalore" },
-      { name: "description", content: "Reserve your visit across Malleshwaram, Jayanagar, Sahakar Nagar and Kammanahalli. Direct lines, locations and a refined booking portal." },
+      { name: "description", content: "Reserve your visit across Jayanagar, Sahakar Nagar, Malleshwaram and Kammanahalli. Direct lines, locations and a refined booking portal." },
     ],
   }),
   component: ContactPage,
 });
 
 const LOCATIONS = [
-  { name: "Malleshwaram", addr: "12, 8th Cross, Margosa Road", phone: "+91 98765 43210" },
-  { name: "Jayanagar", addr: "44, 11th Main, 4th Block", phone: "+91 98765 43211" },
-  { name: "Sahakar Nagar", addr: "9, A-Block, 60 Feet Road", phone: "+91 98765 43212" },
-  { name: "Kammanahalli", addr: "27, OMBR Layout Main", phone: "+91 98765 43213" },
+  { name: "Jayanagar", phone: "+91 80888 02525", map: "https://maps.app.goo.gl/6PYTcrTKPEgDcxPo9" },
+  { name: "Sahakar Nagar", phone: "+91 72041 84033", map: "https://maps.app.goo.gl/2FbYPEBibEjcjg849" },
+  { name: "Malleshwaram", phone: "+91 99019 62026", map: "https://maps.app.goo.gl/31xzBkRdvfs37Rte8" },
+  { name: "Kammanahalli", phone: "+91 73384 61555", map: "https://maps.app.goo.gl/vEpuS4Pi6iHdm4BE8" },
 ];
+
+const EMAIL = "hello@nailroombangalore.com";
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
@@ -39,47 +41,68 @@ function ContactPage() {
 
   return (
     <SiteLayout>
-      {/* Hero */}
-      <section className="section-pad" style={{ paddingTop: 120, paddingBottom: 60, textAlign: "center" }}>
+      <section className="section-pad" style={{ paddingTop: 100, paddingBottom: 50, textAlign: "center" }}>
         <Reveal>
           <Eyebrow>Reserve · Inquire · Visit</Eyebrow>
-          <h1 style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)" }}>
-            Begin your <em className="gold-gradient" style={{ fontStyle: "italic" }}>visit</em>
+          <h1 style={{ fontSize: "clamp(2.8rem, 8vw, 6rem)" }}>
+            Our <em className="gold-gradient" style={{ fontStyle: "italic" }}>Studios</em>
           </h1>
           <GoldDivider />
           <p style={{ maxWidth: 620, margin: "0 auto" }}>
-            Speak with our concierge directly, or reserve through our <strong>private booking portal</strong> below — confirmed within <strong>two hours</strong>.
+            Four refined ateliers across Bangalore. Speak with our concierge or reserve through our <strong>private booking portal</strong> below.
           </p>
         </Reveal>
       </section>
 
-      {/* Locations strip */}
-      <section style={{ padding: "0 5% 60px" }}>
-        <div style={{ maxWidth: 1300, margin: "0 auto" }} className="grid md:grid-cols-4 gap-5">
+      {/* Studio cards */}
+      <section style={{ padding: "0 5% 40px" }}>
+        <div style={{ maxWidth: 1300, margin: "0 auto" }} className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {LOCATIONS.map((l, i) => (
             <Reveal key={l.name} delay={i * 70}>
-              <div className="glass" style={{ padding: "28px 22px", height: "100%" }}>
+              <div className="glass-strong" style={{ padding: "28px 22px", height: "100%" }}>
                 <p className="eyebrow" style={{ marginBottom: 8 }}>Studio</p>
-                <h3 style={{ fontSize: "1.4rem", marginBottom: 8 }}>{l.name}</h3>
-                <p style={{ fontSize: "0.82rem", marginBottom: 14, color: "var(--color-mist)" }}>{l.addr}</p>
+                <h3 style={{ fontSize: "1.4rem", marginBottom: 12 }}>{l.name}</h3>
                 <a
                   href={`tel:${l.phone.replace(/\s/g, "")}`}
                   className="gold-gradient"
-                  style={{ fontFamily: "var(--font-display)", fontSize: "1.2rem", fontWeight: 500 }}
+                  style={{ fontFamily: "var(--font-display)", fontSize: "1.2rem", fontWeight: 500, display: "block", marginBottom: 14 }}
                 >
                   {l.phone}
+                </a>
+                <a
+                  href={l.map}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: "0.72rem", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-gold-bright)" }}
+                >
+                  View on Map →
                 </a>
               </div>
             </Reveal>
           ))}
+
+          {/* Email card */}
+          <Reveal delay={LOCATIONS.length * 70}>
+            <div className="glass-strong" style={{ padding: "28px 22px", height: "100%" }}>
+              <p className="eyebrow" style={{ marginBottom: 8 }}>Email</p>
+              <h3 style={{ fontSize: "1.4rem", marginBottom: 12 }}>Concierge</h3>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="gold-gradient"
+                style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", fontWeight: 500, display: "block", wordBreak: "break-all" }}
+              >
+                {EMAIL}
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Booking portal */}
-      <section className="section-pad" style={{ paddingTop: 40 }}>
+      <section className="section-pad" style={{ paddingTop: 60 }}>
         <div style={{ maxWidth: 880, margin: "0 auto" }}>
           <Reveal>
-            <div className="glass-strong" style={{ padding: "56px 44px", position: "relative" }}>
+            <div className="glass-strong" style={{ padding: "56px 32px", position: "relative" }}>
               <div style={{ position: "absolute", top: -1, left: 40, right: 40, height: 2, background: "linear-gradient(90deg, transparent, var(--color-gold-bright), transparent)" }} />
 
               <div style={{ textAlign: "center", marginBottom: 40 }}>
@@ -122,12 +145,15 @@ function ContactPage() {
                     <div className={`field ${vals.service ? "has-value" : ""}`}>
                       <select id="service" value={vals.service} onChange={(e) => set("service", e.target.value)} onBlur={() => setTouched({ ...touched, service: true })}>
                         <option value="" disabled hidden></option>
-                        <option>Signature Gel Manicure</option>
-                        <option>Russian E-File Manicure</option>
-                        <option>Hand-Painted Nail Art</option>
-                        <option>Gel Extensions</option>
-                        <option>Chrome & Cat-Eye</option>
-                        <option>Luxury Spa Pedicure</option>
+                        <option>Manicure</option>
+                        <option>Pedicure</option>
+                        <option>Acrylic Nails</option>
+                        <option>Nail Art</option>
+                        <option>Nail Polish</option>
+                        <option>Eyelash Extensions</option>
+                        <option>Facials</option>
+                        <option>Waxing</option>
+                        <option>Threading</option>
                       </select>
                       <label htmlFor="service">Service</label>
                       {err("service") && <span className="error">Choose a service</span>}

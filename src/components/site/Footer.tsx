@@ -1,11 +1,35 @@
 import { Link } from "@tanstack/react-router";
 
 const LOCATIONS = [
-  { name: "Malleshwaram", phone: "+91 98765 43210" },
-  { name: "Jayanagar", phone: "+91 98765 43211" },
-  { name: "Sahakar Nagar", phone: "+91 98765 43212" },
-  { name: "Kammanahalli", phone: "+91 98765 43213" },
+  { name: "Jayanagar", phone: "+91 80888 02525" },
+  { name: "Sahakar Nagar", phone: "+91 72041 84033" },
+  { name: "Malleshwaram", phone: "+91 99019 62026" },
+  { name: "Kammanahalli", phone: "+91 73384 61555" },
 ];
+
+function IGIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" />
+    </svg>
+  );
+}
+function FBIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.5-1.5h1.4V5c-.7-.1-1.6-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3V11H7v3h2.7v7h3.8z" />
+    </svg>
+  );
+}
+function YTIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23 7.2c-.3-1.1-1.1-1.9-2.1-2.2C19 4.5 12 4.5 12 4.5s-7 0-8.9.5C2.1 5.3 1.3 6.1 1 7.2.5 9.1.5 12 .5 12s0 2.9.5 4.8c.3 1.1 1.1 1.9 2.1 2.2 1.9.5 8.9.5 8.9.5s7 0 8.9-.5c1-.3 1.8-1.1 2.1-2.2.5-1.9.5-4.8.5-4.8s0-2.9-.5-4.8zM10 15.5v-7l6 3.5-6 3.5z" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -41,7 +65,7 @@ export function Footer() {
         <div>
           <p className="eyebrow">Explore</p>
           <ul style={{ display: "grid", gap: 10, fontSize: "0.85rem" }}>
-            <li><Link to="/">Home & Services</Link></li>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About & Gallery</Link></li>
             <li><Link to="/contact">Contact</Link></li>
             <li><Link to="/faq">FAQ</Link></li>
@@ -53,12 +77,13 @@ export function Footer() {
         <div>
           <p className="eyebrow">Atelier Hours</p>
           <p style={{ fontSize: "0.85rem" }}>
-            Mon — Sat · <strong>10:00 — 20:00</strong><br />
-            Sunday · <strong>11:00 — 19:00</strong>
+            <strong>Open Daily 10:00 AM – 09:00 PM</strong>
           </p>
           <p className="eyebrow" style={{ marginTop: 24 }}>Follow</p>
-          <div style={{ display: "flex", gap: 12, color: "var(--color-gold-bright)", fontSize: "0.85rem", letterSpacing: "0.2em" }}>
-            <a>IG</a><span style={{ opacity: 0.4 }}>·</span><a>FB</a><span style={{ opacity: 0.4 }}>·</span><a>YT</a>
+          <div style={{ display: "flex", gap: 12 }}>
+            <a href="https://instagram.com/nailroomindia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon"><IGIcon /></a>
+            <a href="https://www.facebook.com/nailroomindia/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-icon"><FBIcon /></a>
+            <a href="https://www.youtube.com/@nailroomindia" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="social-icon"><YTIcon /></a>
           </div>
         </div>
       </div>
