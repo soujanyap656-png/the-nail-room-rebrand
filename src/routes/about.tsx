@@ -7,126 +7,100 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About & Gallery — The Nail Room Bangalore" },
-      { name: "description", content: "Meet Bangalore's most awarded nail artists and explore our masonry gallery of signature work — gel, art, extensions, pedicure." },
+      { name: "description", content: "Best nail art studio & salon in Bangalore. Explore our story, why-choose-us, and a curated gallery across all our services." },
     ],
   }),
   component: AboutGalleryPage,
 });
 
-const TEAM = [
-  { name: "Aanya Rao", role: "Founder · Lead Artist", bio: "Trained in **Moscow & Seoul**, Aanya brought Russian e-file precision to Bangalore in 2018." },
-  { name: "Kavya Suresh", role: "Head of Art", bio: "Featured in **Vogue India** for her hand-painted floral micro-art and **couture chrome work**." },
-  { name: "Meher Bhat", role: "Senior Specialist", bio: "Six-time award winner at the **Asia Nail Cup** with mastery in **soft-gel sculpting**." },
-];
+type Cat = "All" | "Manicure" | "Pedicure" | "Acrylic Nails" | "Nail Art" | "Nail Polish" | "Eyelash Extensions" | "Facials" | "Waxing" | "Threading";
 
-type Cat = "All" | "Manicure" | "Pedicure" | "Art" | "Extensions" | "Chrome";
-const GALLERY: { cat: Exclude<Cat, "All">; cls: string }[] = [
-  { cat: "Manicure", cls: "ed-img" },
-  { cat: "Art", cls: "ed-img-rose" },
-  { cat: "Chrome", cls: "ed-img-noir" },
-  { cat: "Extensions", cls: "ed-img-velvet" },
-  { cat: "Pedicure", cls: "ed-img" },
-  { cat: "Art", cls: "ed-img-velvet" },
-  { cat: "Manicure", cls: "ed-img-rose" },
-  { cat: "Chrome", cls: "ed-img" },
-  { cat: "Pedicure", cls: "ed-img-noir" },
-  { cat: "Extensions", cls: "ed-img-rose" },
-  { cat: "Art", cls: "ed-img" },
-  { cat: "Manicure", cls: "ed-img-velvet" },
-  { cat: "Chrome", cls: "ed-img-rose" },
-  { cat: "Pedicure", cls: "ed-img-velvet" },
-  { cat: "Extensions", cls: "ed-img-noir" },
-  { cat: "Art", cls: "ed-img-rose" },
-];
+const IMG_CLASSES = ["ed-img", "ed-img-rose", "ed-img-noir", "ed-img-velvet"];
 
-const HEIGHTS = [320, 420, 280, 360, 460, 300, 380, 340, 420, 300, 360, 440, 300, 380, 320, 400];
+const CATS: Cat[] = ["All", "Manicure", "Pedicure", "Acrylic Nails", "Nail Art", "Nail Polish", "Eyelash Extensions", "Facials", "Waxing", "Threading"];
 
 function AboutGalleryPage() {
   const [cat, setCat] = useState<Cat>("All");
-  const cats: Cat[] = ["All", "Manicure", "Pedicure", "Art", "Extensions", "Chrome"];
-  const filtered = GALLERY.map((g, i) => ({ ...g, i })).filter((g) => cat === "All" || g.cat === cat);
+
+  // All view = 4 imgs × 9 categories carousel
+  const allImages = CATS.slice(1).flatMap((c) =>
+    [0, 1, 2, 3].map((i) => ({ key: `${c}-${i}`, cls: IMG_CLASSES[(i + c.length) % IMG_CLASSES.length] })),
+  );
 
   return (
     <SiteLayout>
-      {/* ===== Magazine hero ===== */}
-      <section className="section-pad" style={{ paddingTop: 120 }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+      {/* ===== ABOUT US ===== */}
+      <section id="about-us" className="section-pad" style={{ paddingTop: 100, scrollMarginTop: 110 }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Reveal>
-            <div style={{ textAlign: "center", marginBottom: 80 }}>
-              <Eyebrow>Our Story</Eyebrow>
-              <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}>
-                Eight years of <em className="gold-gradient" style={{ fontStyle: "italic" }}>quiet</em> obsession
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <Eyebrow>About Us</Eyebrow>
+              <h1 style={{ fontSize: "clamp(2.6rem, 6vw, 4.6rem)" }}>
+                Best Nail Art Studio &amp; <em className="gold-gradient" style={{ fontStyle: "italic" }}>Salon</em> in Bangalore
               </h1>
               <GoldDivider />
             </div>
           </Reveal>
 
-          <div className="grid lg:grid-cols-12 gap-8 items-start">
-            <Reveal>
-              <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                <div className="ed-img" style={{ aspectRatio: "3 / 4", borderRadius: 4, marginTop: 32 }} />
-                <div className="ed-img-rose" style={{ aspectRatio: "3 / 4", borderRadius: 4 }} />
-                <div className="ed-img-velvet" style={{ aspectRatio: "4 / 3", borderRadius: 4, gridColumn: "span 2" }} />
-              </div>
-            </Reveal>
-
-            <Reveal delay={120}>
-              <div className="lg:col-span-7 lg:pl-12">
-                <div className="glass-strong" style={{ padding: "40px 36px" }}>
-                  <p className="eyebrow">Atelier Manifesto</p>
-                  <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginBottom: 24 }}>
-                    Built for the <em className="gold-gradient" style={{ fontStyle: "italic" }}>discerning</em>.
-                  </h2>
-                  <p style={{ marginBottom: 20 }}>
-                    The Nail Room began in <strong>2018</strong>, in a single sunlit room above a Malleshwaram bakery — opened by Aanya Rao, returning home from <strong>Moscow's most exacting nail academy</strong>.
-                  </p>
-                  <p style={{ marginBottom: 20 }}>
-                    Today, across <strong>four refined studios</strong>, we deliver a level of <strong>clinical hygiene</strong> and <strong>hand-artistry</strong> the city had never before seen. No templates. No rushing. <strong>Only craft.</strong>
-                  </p>
-                  <p>
-                    Every guest is welcomed with warm towels, a curated playlist, and the unhurried attention of a <strong>trained specialist</strong> — never an apprentice.
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
+          <Reveal delay={120}>
+            <div className="glass-strong" style={{ padding: "40px 32px" }}>
+              <p style={{ marginBottom: 18 }}>
+                Looking for the <strong>best nail art and care services in Bangalore</strong>? Look no further than Nail Room! Our team of <strong>skilled and experienced nail artists</strong> is dedicated to providing the highest quality services to help you achieve the perfect nails. We take pride in being the <strong>best nail salon in Bangalore</strong> and beyond, offering a wide range of services including <strong>manicure, pedicure, acrylic nails, nail art</strong>, and more. Our experts use the latest techniques and high-quality products to ensure that your nails are <strong>healthy, strong, and beautiful</strong>.
+              </p>
+              <p style={{ marginBottom: 18 }}>
+                At Nail Room, we understand that your nails are an important part of your overall look, which is why we take extra care to ensure that each client's <strong>unique needs are met</strong>. Our talented nail artists are always up-to-date with the <strong>latest trends and techniques</strong> in the industry, ensuring that you always receive the best service.
+              </p>
+              <p style={{ marginBottom: 18 }}>
+                With locations in <strong>Jayanagar, Sahakar Nagar, Malleshwaram, and Kammanahalli</strong>, we bring <strong>premium nail care</strong> closer to you. Whether you're looking for the <strong>best nail art</strong>, the finest <strong>manicure and pedicure</strong>, or just a relaxing experience, Nail Room has got you covered.
+              </p>
+              <p>
+                <strong>Book an appointment with us today</strong> and experience the best in nail care and art services in Bangalore and beyond!
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ===== Team ===== */}
-      <section className="section-pad">
-        <div style={{ maxWidth: 1300, margin: "0 auto" }}>
+      {/* ===== WHY CHOOSE NAIL ROOM ===== */}
+      <section className="section-pad" style={{ paddingTop: 40 }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Reveal>
-            <div style={{ textAlign: "center", marginBottom: 64 }}>
-              <Eyebrow>The Artists</Eyebrow>
-              <h2 style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}>
-                Hands you can <em className="gold-gradient" style={{ fontStyle: "italic" }}>trust</em>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <Eyebrow>Why The Nail Room</Eyebrow>
+              <h2 style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}>
+                Why <em className="gold-gradient" style={{ fontStyle: "italic" }}>Choose</em> Nail Room?
               </h2>
               <GoldDivider />
             </div>
           </Reveal>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {TEAM.map((m, i) => (
-              <Reveal key={m.name} delay={i * 100}>
-                <div className="glass-strong" style={{ padding: 0, overflow: "hidden" }}>
-                  <div className={i === 1 ? "ed-img-rose" : "ed-img"} style={{ aspectRatio: "4 / 5" }} />
-                  <div style={{ padding: 28 }}>
-                    <h3 style={{ fontSize: "1.7rem", marginBottom: 4 }}>{m.name}</h3>
-                    <p style={{ color: "var(--color-gold-bright)", fontSize: "0.72rem", letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: 16 }}>{m.role}</p>
-                    <p
-                      style={{ fontSize: "0.9rem" }}
-                      dangerouslySetInnerHTML={{ __html: m.bio.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
+          <Reveal delay={120}>
+            <div className="glass-strong" style={{ padding: "40px 32px" }}>
+              <p style={{ marginBottom: 24 }}>
+                Our team of <strong>experienced nail artists</strong> are dedicated to providing you with the <strong>ultimate nail spa experience</strong>, using only the <strong>highest quality products</strong> and techniques. Whether you're looking for classic nail treatments or the <strong>latest in nail art trends</strong>, we've got you covered.
+              </p>
+              <ul style={{ display: "grid", gap: 14, listStyle: "none", padding: 0 }}>
+                {[
+                  "Discover the **latest trends and designs** in nail art at Nail Room.",
+                  "Our **expert nail artists** are here to help you achieve your dream nails.",
+                  "We only use the **highest quality products** and techniques for a **long-lasting finish**.",
+                  "Come visit us at Nail Room and leave with **beautiful, healthy nails** that you'll love to show off.",
+                ].map((b) => (
+                  <li key={b} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                    <span style={{ color: "var(--color-gold-bright)", fontFamily: "var(--font-display)", fontSize: "1.2rem", lineHeight: 1 }}>✦</span>
+                    <span
+                      style={{ color: "var(--color-mist)", fontSize: "0.95rem", lineHeight: 1.7 }}
+                      dangerouslySetInnerHTML={{ __html: b.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
                     />
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ===== Gallery — masonry with filters ===== */}
+      {/* ===== GALLERY ===== */}
       <section className="section-pad">
         <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <Reveal>
@@ -140,13 +114,13 @@ function AboutGalleryPage() {
           </Reveal>
 
           <Reveal>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center", marginBottom: 48 }}>
-              {cats.map((c) => (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center", marginBottom: 40 }}>
+              {CATS.map((c) => (
                 <button
                   key={c}
                   onClick={() => setCat(c)}
                   className={cat === c ? "btn-gold" : "btn-ghost-gold"}
-                  style={{ padding: "12px 22px", fontSize: "0.7rem" }}
+                  style={{ padding: "10px 18px", fontSize: "0.62rem" }}
                 >
                   {c}
                 </button>
@@ -154,32 +128,37 @@ function AboutGalleryPage() {
             </div>
           </Reveal>
 
-          <div style={{ columnCount: 1, columnGap: 16 }} className="md:[column-count:2] lg:[column-count:3] xl:[column-count:4]">
-            {filtered.map((g) => (
-              <div key={g.i} style={{ breakInside: "avoid", marginBottom: 16 }}>
+          {cat === "All" ? (
+            <div className="h-scroll">
+              {allImages.map((img) => (
                 <div
-                  className={`${g.cls} lift-img`}
+                  key={img.key}
+                  className={img.cls}
                   style={{
-                    height: HEIGHTS[g.i],
+                    aspectRatio: "4 / 5",
                     borderRadius: 6,
                     border: "1px solid rgba(230,199,112,0.22)",
                     boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
-                    transition: "transform 0.5s ease, box-shadow 0.5s ease",
-                    cursor: "pointer",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "scale(1.03)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 30px 80px rgba(230,199,112,0.25)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "scale(1)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 20px 50px rgba(0,0,0,0.4)";
                   }}
                 />
-                <p style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-gold)", marginTop: 8 }}>{g.cat}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, maxWidth: 900, margin: "0 auto" }}>
+              {[0, 1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className={IMG_CLASSES[i]}
+                  style={{
+                    aspectRatio: "1 / 1",
+                    borderRadius: 6,
+                    border: "1px solid rgba(230,199,112,0.22)",
+                    boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
