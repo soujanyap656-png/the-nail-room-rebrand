@@ -7,7 +7,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div style={{ minHeight: "100vh" }}>
       <Header />
-      <main style={{ paddingTop: 76 }}>{children}</main>
+      <main style={{ paddingTop: 104 }}>{children}</main>
       <Footer />
     </div>
   );
