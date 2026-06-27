@@ -230,6 +230,20 @@
 .h-scroll > * { scroll-snap-align: start; flex: 0 0 78%; }
 @media (min-width: 768px) { .h-scroll > * { flex: 0 0 32%; } }
 
+/* Social icon button */
+.social-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid rgba(230,199,112,0.4);
+  color: var(--color-gold-bright);
+  transition: all 0.3s ease;
+}
+.social-icon:hover { background: rgba(230,199,112,0.12); border-color: var(--color-gold-bright); transform: translateY(-2px); }
+
+/* Nav link mobile-friendly */
+.nav-strip { display: flex; align-items: center; gap: 18px; overflow-x: auto; scrollbar-width: none; }
+.nav-strip::-webkit-scrollbar { display: none; }
+
 /* Scroll-line indicator */
 @keyframes scroll-pulse {
   0%, 100% { transform: scaleY(0.3); transform-origin: top; opacity: 0.4; }
