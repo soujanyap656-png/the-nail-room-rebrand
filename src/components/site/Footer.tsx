@@ -35,13 +35,13 @@ export function Footer() {
   return (
     <footer
       style={{
-        background: "linear-gradient(180deg, #07040F 0%, #0B0716 100%)",
-        borderTop: "1px solid rgba(230,199,112,0.25)",
+        background: "linear-gradient(180deg, #1A0A2E 0%, #1A0A2E 100%)",
+        borderTop: "1px solid rgba(201,168,76,0.25)",
         color: "var(--color-mist)",
         padding: "80px 5% 32px",
       }}
     >
-      <div style={{ maxWidth: 1400, margin: "0 auto" }} className="grid md:grid-cols-4 gap-12">
+      <div style={{ maxWidth: 1400, margin: "0 auto" }} className="grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
           <h3 className="gold-gradient" style={{ fontSize: "1.6rem", marginBottom: 16 }}>The Nail Room</h3>
           <p style={{ fontSize: "0.88rem" }}>
@@ -56,7 +56,9 @@ export function Footer() {
               <li key={l.name}>
                 <span style={{ color: "var(--color-gold-bright)" }}>{l.name}</span>
                 <br />
-                <span style={{ fontSize: "0.78rem" }}>{l.phone}</span>
+                <a href={`tel:${l.phone.replace(/\s+/g, "")}`} style={{ fontSize: "0.78rem", color: "var(--color-mist)" }}>
+                  {l.phone}
+                </a>
               </li>
             ))}
           </ul>

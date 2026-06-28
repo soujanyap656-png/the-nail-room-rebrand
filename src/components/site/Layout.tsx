@@ -5,9 +5,9 @@ import { Footer } from "./Footer";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "100vh", overflowX: "hidden" }}>
       <Header />
-      <main style={{ paddingTop: 104 }}>{children}</main>
+      <main style={{ paddingTop: 64 }}>{children}</main>
       <Footer />
     </div>
   );

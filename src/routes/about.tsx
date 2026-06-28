@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteLayout, Eyebrow, GoldDivider, PageFooterNav } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
+import { SERVICES } from "./index";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -15,17 +16,20 @@ export const Route = createFileRoute("/about")({
 
 type Cat = "All" | "Manicure" | "Pedicure" | "Acrylic Nails" | "Nail Art" | "Nail Polish" | "Eyelash Extensions" | "Facials" | "Waxing" | "Threading";
 
-const IMG_CLASSES = ["ed-img", "ed-img-rose", "ed-img-noir", "ed-img-velvet"];
-
 const CATS: Cat[] = ["All", "Manicure", "Pedicure", "Acrylic Nails", "Nail Art", "Nail Polish", "Eyelash Extensions", "Facials", "Waxing", "Threading"];
 
 function AboutGalleryPage() {
   const [cat, setCat] = useState<Cat>("All");
 
-  // All view = 4 imgs × 9 categories carousel
-  const allImages = CATS.slice(1).flatMap((c) =>
-    [0, 1, 2, 3].map((i) => ({ key: `${c}-${i}`, cls: IMG_CLASSES[(i + c.length) % IMG_CLASSES.length] })),
+  const allImages = SERVICES.flatMap((s) =>
+    s.imgs.map((src, i) => ({ key: `${s.name}-${i}`, src, cat: s.name })),
   );
+
+  const visible =
+    cat === "All"
+      ? allImages
+      : allImages.filter((img) => img.cat === cat);
+
 
   return (
     <SiteLayout>
@@ -128,37 +132,29 @@ function AboutGalleryPage() {
             </div>
           </Reveal>
 
-          {cat === "All" ? (
-            <div className="h-scroll">
-              {allImages.map((img) => (
-                <div
-                  key={img.key}
-                  className={img.cls}
-                  style={{
-                    aspectRatio: "4 / 5",
-                    borderRadius: 6,
-                    border: "1px solid rgba(230,199,112,0.22)",
-                    boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
-                  }}
-                />
-              ))}
-            </div>
-          ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, maxWidth: 900, margin: "0 auto" }}>
-              {[0, 1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className={IMG_CLASSES[i]}
-                  style={{
-                    aspectRatio: "1 / 1",
-                    borderRadius: 6,
-                    border: "1px solid rgba(230,199,112,0.22)",
-                    boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
-                  }}
-                />
-              ))}
-            </div>
-          )}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 240px), 1fr))",
+              gap: 16,
+            }}
+          >
+            {visible.map((img) => (
+              <div
+                key={img.key}
+                style={{
+                  aspectRatio: "4 / 5",
+                  borderRadius: 6,
+                  border: "1px solid rgba(201,168,76,0.25)",
+                  boxShadow: "0 20px 50px rgba(20,8,40,0.4)",
+                  backgroundImage: `url("${img.src}")`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundColor: "#2D1B4E",
+                }}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
