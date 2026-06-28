@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteLayout, Eyebrow, GoldDivider, PageFooterNav } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
+import { SERVICES } from "./index";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -15,17 +16,20 @@ export const Route = createFileRoute("/about")({
 
 type Cat = "All" | "Manicure" | "Pedicure" | "Acrylic Nails" | "Nail Art" | "Nail Polish" | "Eyelash Extensions" | "Facials" | "Waxing" | "Threading";
 
-const IMG_CLASSES = ["ed-img", "ed-img-rose", "ed-img-noir", "ed-img-velvet"];
-
 const CATS: Cat[] = ["All", "Manicure", "Pedicure", "Acrylic Nails", "Nail Art", "Nail Polish", "Eyelash Extensions", "Facials", "Waxing", "Threading"];
 
 function AboutGalleryPage() {
   const [cat, setCat] = useState<Cat>("All");
 
-  // All view = 4 imgs × 9 categories carousel
-  const allImages = CATS.slice(1).flatMap((c) =>
-    [0, 1, 2, 3].map((i) => ({ key: `${c}-${i}`, cls: IMG_CLASSES[(i + c.length) % IMG_CLASSES.length] })),
+  const allImages = SERVICES.flatMap((s) =>
+    s.imgs.map((src, i) => ({ key: `${s.name}-${i}`, src, cat: s.name })),
   );
+
+  const visible =
+    cat === "All"
+      ? allImages
+      : allImages.filter((img) => img.cat === cat);
+
 
   return (
     <SiteLayout>
