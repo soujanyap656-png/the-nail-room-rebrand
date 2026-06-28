@@ -13,16 +13,15 @@ export const Route = createFileRoute("/privacy")({
 });
 
 const SECTIONS = [
-  { t: "1 · What We Collect", d: "We collect only what is necessary to host you well: **name, mobile, email**, preferred studio, service history, and any artist notes you share. No more, no less." },
-  { t: "2 · How We Use It", d: "To **confirm reservations**, send appointment reminders, recall your preferences on return visits, and — only if you opt in — share occasional **atelier updates and editorial features**." },
-  { t: "3 · Payment Data", d: "Card details are processed exclusively through **PCI-DSS compliant gateways** (Razorpay & Stripe). We never see or store your full card number on our systems." },
-  { t: "4 · Imagery & Consent", d: "We photograph completed nail work for our portfolio and social channels. **Faces are never captured** without explicit, written, opt-in consent. You may revoke this at any time." },
-  { t: "5 · Data Sharing", d: "We do **not sell** or rent your information. We share only with vetted vendors (SMS, email, payment) bound by confidentiality and the minimum data required to deliver the service." },
-  { t: "6 · Data Retention", d: "Active guest records are retained for as long as you remain a client plus **three years**, after which they are securely deleted. Anonymised analytics may be retained indefinitely." },
-  { t: "7 · Your Rights", d: "You may request **access, correction or deletion** of your records at any time by writing to privacy@thenailroom.in. We respond within **seven working days**." },
-  { t: "8 · Cookies", d: "Our website uses **essential cookies** for functionality and **anonymous analytics** to improve the experience. You may decline non-essential cookies via your browser." },
-  { t: "9 · Security", d: "All guest data is stored on **encrypted, India-resident servers** with role-based access controls, monthly access audits and quarterly third-party penetration testing." },
-  { t: "10 · Contact the DPO", d: "For any privacy matter, write to our **Data Protection Officer** at privacy@thenailroom.in or call +91 98765 43200 between 10:00 and 18:00 IST, Monday to Friday." },
+  { t: "Introduction", d: "**Nail Room** is committed to protecting the privacy and security of our clients' information. This Privacy Policy outlines the **types of information** we collect from our clients, how we use it, and the **steps we take** to ensure it is protected." },
+  { t: "1 · Information Collection", d: "We collect information from our clients in the following ways:<br/><br/>**Directly from the Client:** Information such as **name, contact information, and health-related concerns** are collected during appointment bookings, consultations, or service provision.<br/><br/>**Automatically when you visit our website:** We may collect certain information automatically through **cookies or analytics tools**, including but not limited to IP address, device type, and browsing behavior." },
+  { t: "2 · Use of Information", d: "The information we collect is used to:<br/><br/>• **Provide, personalize, and improve** our services.<br/>• Manage appointments, including **reminders and cancellations**.<br/>• Communicate with clients about their services, promotions, or updates to our policies.<br/>• Ensure a **safe and customized service experience**, especially concerning health-related concerns." },
+  { t: "3 · Sharing of Information", d: "We **do not sell or rent** client information to third parties. Information may be shared with:<br/><br/>• **Service providers** who perform functions on our behalf (e.g., appointment booking software).<br/>• **Law enforcement** or other government agencies, if required by law or in good faith belief that such action is necessary to comply with legal obligations." },
+  { t: "4 · Data Security", d: "We implement **appropriate technical and organizational measures** to protect the security of our clients' personal information from unauthorized access, use, alteration, or destruction." },
+  { t: "5 · Your Rights", d: "Clients have the right to:<br/><br/>• Request **access** to the personal information we hold about them.<br/>• Request **corrections** to any inaccurate or incomplete information.<br/>• Request **deletion** of their personal information, subject to certain exceptions.<br/>• **Opt-out** of receiving marketing communications from us." },
+  { t: "6 · Changes to This Privacy Policy", d: "We may **update this Privacy Policy** from time to time. Any changes will be posted on our website or communicated through our usual communication channels with clients." },
+  { t: "7 · Contact Us", d: "For any questions or concerns regarding this Privacy Policy or your personal information, please contact us at **+91 80888 02525**." },
+  { t: "8 · Acceptance of This Policy", d: "By accessing our services, you **acknowledge and agree** to the terms of this Privacy Policy." },
 ];
 
 function PrivacyPage() {
