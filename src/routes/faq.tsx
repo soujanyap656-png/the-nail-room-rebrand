@@ -1,6 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { SiteLayout, Eyebrow, GoldDivider, PageFooterNav } from "@/components/site/Layout";
+import { SiteLayout, GoldDivider, PageFooterNav, Particles } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/faq")({
@@ -15,36 +15,36 @@ export const Route = createFileRoute("/faq")({
 
 const FAQ = [
   {
-    q: "What nail art services does Nail Room offer?",
-    a: "Nail Room offers a **diverse selection of nail art services** to cater to every style and occasion. Our offerings include **classic manicures, sparkle and chrome polish, elegant bridal nail designs**, and unique creative nail art. Additionally, we provide **nail extensions, overlays, and tip repairs** to enhance and maintain your nails.",
+    q: "What nail art services does The Nail Room offer?",
+    a: "We offer a diverse selection of nail art services to cater to every style and occasion. Our offerings include **classic manicures, sparkle and chrome polish, elegant bridal nail designs**, and unique creative nail art. Additionally, we provide **nail extensions, overlays, and tip repairs** to enhance and maintain your nails.",
   },
   {
-    q: "How do I book an appointment at Nail Room?",
-    a: "To ensure you receive the best possible service, we recommend **scheduling an appointment in advance**. You can easily book your nail art session **online or by phone**. This helps us guarantee availability and allocate the right time for your service.",
+    q: "How do I book an appointment?",
+    a: "To ensure you receive the best possible service, we recommend **scheduling an appointment in advance**. You can easily book through our **online booking portal** or by calling your nearest studio directly. This helps us guarantee availability and allocate the right time for your service.",
   },
   {
     q: "Can I request a specific nail artist?",
-    a: "You can **request a specific nail artist** at Nail Room based on their availability. We will do our best to accommodate your preference, but please note that it is **subject to scheduling**.",
+    a: "You can absolutely **request a specific nail artist** based on their availability. We will do our best to accommodate your preference. If your preferred artist is unavailable, we can recommend another from our trained team who matches your style.",
   },
   {
-    q: "What products does Nail Room use?",
-    a: "Nail Room is committed to using only the **highest quality and safest products** for all nail art services. Our products are carefully selected to ensure **compatibility with natural nails**, and we continuously update our inventory to meet the **latest industry standards**.",
+    q: "What products does The Nail Room use?",
+    a: "We are committed to using only the **highest quality and safest products** for all nail art services. Our products are carefully selected to ensure **compatibility with natural nails**, and we continuously update our inventory to meet the **latest industry standards**.",
   },
   {
-    q: "What is Nail Room's cancellation and rescheduling policy?",
-    a: "We require at least **24 hours' notice** for any appointment cancellations or rescheduling. Cancellations made less than 24 hours in advance may incur a fee. **Failure to show up** for an appointment without prior notice may result in a cancellation fee. For further information, please contact the salon directly.",
+    q: "What is your cancellation and rescheduling policy?",
+    a: "We require at least **24 hours' notice** for any appointment cancellations or rescheduling. Cancellations made less than 24 hours in advance may incur a fee. **Failure to show up** without prior notice may result in a cancellation fee. For further information, please contact your studio directly.",
   },
   {
     q: "Are there any design limitations for nail art?",
-    a: "At Nail Room, we strive to accommodate a **broad spectrum of nail art designs**. However, we reserve the right to decline any designs that are **offensive or violate legal guidelines**. Our goal is to provide creative and professional nail art while maintaining a **respectful and safe environment**.",
+    a: "We strive to accommodate a **broad spectrum of nail art designs**. However, we reserve the right to decline any designs that are **offensive or violate legal guidelines**. Our goal is to provide creative and professional nail art while maintaining a **respectful and safe environment**.",
   },
   {
     q: "What payment methods do you accept?",
-    a: "We accept various forms of payment, including **credit cards, debit cards, and cash**. Services and gift certificates are **non-refundable** but may be used for future appointments.",
+    a: "We accept **credit cards, debit cards, UPI, and cash**. Services and gift certificates are **non-refundable** but may be used for future appointments.",
   },
   {
     q: "Are walk-in appointments available?",
-    a: "**Walk-ins are welcome.** However, appointments are recommended to guarantee your **preferred time slot and nail artist**.",
+    a: "**Walk-ins are welcome** at all our studios. However, appointments are recommended to guarantee your **preferred time slot and nail artist**, especially on weekends and festive seasons.",
   },
 ];
 
@@ -53,35 +53,131 @@ function FAQPage() {
 
   return (
     <SiteLayout>
-      <section className="section-pad" style={{ paddingTop: 100, textAlign: "center", paddingBottom: 50 }}>
-        <Reveal>
-          <Eyebrow>Frequently Asked</Eyebrow>
-          <h1 style={{ fontSize: "clamp(2.8rem, 8vw, 6rem)" }}>
-            Your <em className="gold-gradient" style={{ fontStyle: "italic" }}>questions</em>, answered
-          </h1>
-          <GoldDivider />
-        </Reveal>
+      {/* ===== HERO ===== */}
+      <section
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          paddingTop: "clamp(100px, 14vw, 160px)",
+          paddingBottom: "clamp(60px, 10vw, 100px)",
+          paddingLeft: "5%",
+          paddingRight: "5%",
+          background: "linear-gradient(135deg, #1A1208 0%, #2A1F12 50%, #1A1208 100%)",
+        }}
+      >
+        <Particles count={10} />
+        <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
+          <Reveal>
+            <span className="eyebrow" style={{ color: "#C9A456" }}>Frequently Asked</span>
+          </Reveal>
+          <Reveal delay={100}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 7vw, 5.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
+              Your{" "}
+              <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Questions,</em>
+              <br />
+              Answered.
+            </h1>
+          </Reveal>
+          <Reveal delay={200}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "rgba(250,247,242,0.8)", maxWidth: 480, margin: "20px auto 0", lineHeight: 1.85 }}>
+              Everything you need to know before your visit.
+            </p>
+          </Reveal>
+        </div>
       </section>
 
-      <section className="section-pad" style={{ paddingTop: 20 }}>
+      {/* ===== FAQ ACCORDION ===== */}
+      <section className="section-pad" style={{ background: "#FAF7F2", paddingTop: 60 }}>
         <div style={{ maxWidth: 920, margin: "0 auto" }}>
           {FAQ.map((f, i) => {
             const open = openIdx === i;
             return (
-              <Reveal key={f.q}>
-                <div className="acc-item" style={open ? { borderColor: "rgba(230,199,112,0.55)", boxShadow: "0 20px 50px rgba(230,199,112,0.1)" } : {}}>
-                  <button className="acc-btn" onClick={() => setOpenIdx(open ? null : i)} aria-expanded={open}>
-                    <span>
-                      <span className="gold-gradient" style={{ fontStyle: "italic", marginRight: 14 }}>{String(i + 1).padStart(2, "0")}</span>
-                      {f.q}
+              <Reveal key={f.q} delay={i * 50}>
+                <div
+                  style={{
+                    background: open ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.5)",
+                    backdropFilter: "blur(16px)",
+                    borderRadius: 12,
+                    border: open ? "1px solid rgba(201,164,86,0.5)" : "1px solid rgba(201,164,86,0.15)",
+                    marginBottom: 12,
+                    overflow: "hidden",
+                    boxShadow: open ? "0 8px 32px rgba(90,60,20,0.1)" : "none",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  <button
+                    onClick={() => setOpenIdx(open ? null : i)}
+                    aria-expanded={open}
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: 16,
+                      padding: "28px 32px",
+                      background: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      textAlign: "left",
+                    }}
+                  >
+                    <span style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
+                      <span
+                        style={{
+                          fontFamily: "var(--font-serif)",
+                          fontSize: "0.9rem",
+                          color: "#C9A456",
+                          fontWeight: 400,
+                          minWidth: 32,
+                          flexShrink: 0,
+                        }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          fontStyle: "italic",
+                          fontSize: "clamp(1.1rem, 2vw, 1.35rem)",
+                          color: "#1A1208",
+                          fontWeight: 400,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {f.q}
+                      </span>
                     </span>
-                    <span className="acc-icon" style={{ transform: open ? "rotate(45deg)" : "rotate(0)" }}>+</span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        fontSize: "1.5rem",
+                        color: "#C9A456",
+                        transition: "transform 0.3s ease",
+                        transform: open ? "rotate(45deg)" : "rotate(0)",
+                        flexShrink: 0,
+                      }}
+                    >
+                      +
+                    </span>
                   </button>
-                  <div className="acc-panel" style={{ maxHeight: open ? 500 : 0 }}>
-                    <div
-                      className="acc-panel-inner"
-                      dangerouslySetInnerHTML={{ __html: f.a.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
-                    />
+                  <div
+                    style={{
+                      maxHeight: open ? 400 : 0,
+                      overflow: "hidden",
+                      transition: "max-height 0.4s ease",
+                    }}
+                  >
+                    <div style={{ padding: "0 32px 28px", paddingLeft: 80 }}>
+                      <div
+                        style={{
+                          fontFamily: "var(--font-body)",
+                          fontSize: "0.92rem",
+                          color: "#5C4A35",
+                          lineHeight: 1.85,
+                        }}
+                        dangerouslySetInnerHTML={{ __html: f.a.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") }}
+                      />
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -90,7 +186,31 @@ function FAQPage() {
         </div>
       </section>
 
-      <PageFooterNav nextTo="/terms" nextLabel="Terms of Service" />
+      {/* ===== STILL HAVE QUESTIONS ===== */}
+      <section className="section-pad" style={{ background: "#F3EDE4" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+          <Reveal>
+            <span className="eyebrow">Still Have Questions?</span>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#1A1208", fontWeight: 400, fontStyle: "italic", marginTop: 8 }}>
+              We're <em className="gradient-text" style={{ fontFamily: "var(--font-serif)" }}>Here to Help.</em>
+            </h2>
+            <GoldDivider />
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "#5C4A35", lineHeight: 1.85, marginBottom: 28 }}>
+              Our concierge team is available to answer any questions about services, booking, or studio policies.
+            </p>
+            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link to="/contact" className="btn-primary">
+                Contact Us →
+              </Link>
+              <a href="mailto:hello@nailroombangalore.com" className="btn-outline-gold">
+                Email Concierge
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <PageFooterNav nextTo="/terms" nextLabel="Terms of Service →" teaser="Review our policies, guarantees, and service terms." />
     </SiteLayout>
   );
 }
