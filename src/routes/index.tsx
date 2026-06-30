@@ -295,45 +295,88 @@ function HomePage() {
       </section>
 
       {/* ===== AS FEATURED IN ===== */}
-      <section style={{ background: "#F3EDE4", padding: "56px 5%" }}>
+      <section style={{ background: "#EDE5D8", padding: "52px 5%", borderTop: "1px solid rgba(201,164,86,0.18)", borderBottom: "1px solid rgba(201,164,86,0.18)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+
+          {/* Label row */}
           <Reveal>
-            <div style={{ textAlign: "center", marginBottom: 24 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 20, justifyContent: "center", marginBottom: 32 }}>
+              <div style={{ flex: 1, maxWidth: 180, height: 1, background: "linear-gradient(90deg, transparent, #C9A456)" }} />
               <p style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "0.65rem",
-                letterSpacing: "0.4em",
+                fontSize: "0.72rem",
+                letterSpacing: "0.52em",
                 textTransform: "uppercase",
-                color: "#C9A456",
-                fontWeight: 500,
-                marginBottom: 12
+                color: "#8B7355",
+                fontWeight: 600,
+                whiteSpace: "nowrap",
               }}>
                 As Seen In
               </p>
-              <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.5), transparent)", maxWidth: 320, margin: "0 auto" }} />
+              <div style={{ flex: 1, maxWidth: 180, height: 1, background: "linear-gradient(90deg, #C9A456, transparent)" }} />
             </div>
           </Reveal>
-          <Reveal delay={100}>
+
+          {/* Static name grid — primary display */}
+          <Reveal delay={80}>
             <div style={{
-              borderTop: "1px solid rgba(201,164,86,0.3)",
-              borderBottom: "1px solid rgba(201,164,86,0.3)",
-              padding: "28px 0",
-              overflow: "hidden",
-              maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "clamp(24px, 5vw, 64px)",
+              flexWrap: "wrap",
+              padding: "20px 0",
+              borderTop: "1px solid rgba(201,164,86,0.25)",
+              borderBottom: "1px solid rgba(201,164,86,0.25)",
             }}>
-              <div className="marquee-track">
+              {PRESS.map((p) => (
+                <span
+                  key={p}
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    fontStyle: "italic",
+                    fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+                    color: "#3D2E1C",
+                    letterSpacing: "0.04em",
+                    fontWeight: 400,
+                    opacity: 0.85,
+                    transition: "opacity 0.25s ease, color 0.25s ease",
+                    cursor: "default",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.opacity = "1";
+                    (e.currentTarget as HTMLElement).style.color = "#C9A456";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.opacity = "0.85";
+                    (e.currentTarget as HTMLElement).style.color = "#3D2E1C";
+                  }}
+                >
+                  {p}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          {/* Scrolling marquee below — secondary, decorative */}
+          <Reveal delay={160}>
+            <div style={{
+              marginTop: 20,
+              overflow: "hidden",
+              maskImage: "linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)",
+            }}>
+              <div className="marquee-track" style={{ gap: "clamp(32px, 6vw, 80px)" }}>
                 {[...PRESS, ...PRESS, ...PRESS, ...PRESS].map((p, i) => (
                   <span
                     key={i}
                     style={{
-                      fontFamily: "var(--font-serif)",
-                      fontStyle: "italic",
-                      fontSize: "1.65rem",
-                      color: "#5C4A35",
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "0.62rem",
+                      letterSpacing: "0.45em",
+                      textTransform: "uppercase",
+                      color: "#A89880",
+                      fontWeight: 500,
                       whiteSpace: "nowrap",
-                      letterSpacing: "0.08em",
-                      fontWeight: 400,
-                      transition: "color 0.3s ease",
                     }}
                   >
                     {p}
@@ -342,25 +385,7 @@ function HomePage() {
               </div>
             </div>
           </Reveal>
-          <Reveal delay={200}>
-            <div style={{ display: "flex", justifyContent: "center", gap: 40, marginTop: 28, flexWrap: "wrap" }}>
-              {PRESS.map((p) => (
-                <span
-                  key={p}
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.3em",
-                    textTransform: "uppercase",
-                    color: "#A89880",
-                    fontWeight: 500,
-                  }}
-                >
-                  {p}
-                </span>
-              ))}
-            </div>
-          </Reveal>
+
         </div>
       </section>
 
