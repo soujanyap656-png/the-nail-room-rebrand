@@ -2,12 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
 import { SiteLayout, GoldDivider, Stars, PageFooterNav, Particles } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
+import img_hero from "@/assets/1782536277899.png.asset.json";
 import img_manicure1 from "@/assets/c612e651df488d64a48ce23eda24ce18.jpg.asset.json";
 import img_manicure2 from "@/assets/8b16ce6e0c96ffe6d6a5b61f3124313e.jpg.asset.json";
 import img_manicure3 from "@/assets/9cf2a71738b3eedb94727905b550a3a6.jpg.asset.json";
 import img_pedicure1 from "@/assets/156b33ce3f1b839cb9a2561e1211df0e.jpg.asset.json";
-
-const heroImg = "https://images.unsplash.com/photo-1604654894610-df1bc3b2ed4d?w=1600&q=80";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -184,6 +183,50 @@ function ServiceCarousel({ imgs }: { imgs: string[] }) {
   );
 }
 
+function AtelierHoursCard() {
+  return (
+    <div
+      className="dark-card"
+      style={{
+        padding: "40px 48px",
+        textAlign: "center",
+        position: "relative",
+        overflow: "hidden",
+        animation: "fadeSlideUp 0.7s ease-out forwards",
+      }}
+    >
+      <div className="card-gold-top" />
+      {/* Animated pulsing dot */}
+      <div
+        style={{
+          position: "absolute",
+          top: 20,
+          right: 20,
+          width: 12,
+          height: 12,
+          borderRadius: "50%",
+          background: "#C9A456",
+          animation: "pulse 2s ease-in-out infinite",
+        }}
+      />
+      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "#C9A456", marginBottom: 16 }}>
+        ✦ Atelier Hours ✦
+      </p>
+      <div style={{ display: "flex", gap: 20, alignItems: "center", justifyContent: "center", marginBottom: 16, flexWrap: "wrap" }}>
+        <span style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "rgba(250,247,242,0.85)" }}>Monday – Sunday</span>
+        <span style={{ width: 1, height: 24, background: "rgba(201,164,86,0.4)" }} />
+        <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontSize: "1.1rem", color: "#C9A456" }}>10:30 AM – 8:30 PM</span>
+      </div>
+      <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.85rem", color: "rgba(250,247,242,0.6)", marginBottom: 4 }}>
+        Walk-ins welcome. Appointments recommended.
+      </p>
+      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "rgba(250,247,242,0.45)" }}>
+        Working hours may vary on public holidays.
+      </p>
+    </div>
+  );
+}
+
 function HomePage() {
   return (
     <SiteLayout>
@@ -192,69 +235,106 @@ function HomePage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(100px, 14vw, 160px)",
-          paddingBottom: "clamp(80px, 12vw, 140px)",
+          paddingTop: "clamp(80px, 12vw, 140px)",
+          paddingBottom: "clamp(60px, 10vw, 120px)",
           paddingLeft: "5%",
           paddingRight: "5%",
         }}
       >
         <img
-          src={heroImg}
+          src={img_hero.url}
           alt=""
           aria-hidden="true"
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: -2 }}
           loading="eager"
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(18,13,6,0.72) 0%, rgba(18,13,6,0.28) 50%, rgba(18,13,6,0.82) 100%)", zIndex: -1 }} />
-        <Particles count={14} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(18,13,6,0.75) 0%, rgba(18,13,6,0.35) 40%, rgba(18,13,6,0.85) 100%)", zIndex: -1 }} />
+        <Particles count={12} />
 
-        <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <Reveal>
-            <span className="eyebrow" style={{ color: "#C9A456" }}>Bangalore's Nail Atelier</span>
+            <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 12, display: "block" }}>Bangalore's Nail Atelier</span>
           </Reveal>
-          <Reveal delay={100}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem, 8vw, 6.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, marginBottom: 20, color: "#FAF7F2" }}>
+          <Reveal delay={80}>
+            <h1 style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2.2rem, 6vw, 5rem)",
+              fontWeight: 400,
+              fontStyle: "italic",
+              lineHeight: 1.05,
+              marginBottom: 16,
+              color: "#FAF7F2"
+            }}>
               The Art of the{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Statement</em>{" "}
               Nail.
             </h1>
           </Reveal>
-          <Reveal delay={200}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.98rem", color: "rgba(250,247,242,0.85)", maxWidth: 520, margin: "0 auto 32px", lineHeight: 1.9 }}>
+          <Reveal delay={160}>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "0.92rem",
+              color: "rgba(250,247,242,0.85)",
+              maxWidth: 480,
+              margin: "0 auto 24px",
+              lineHeight: 1.8
+            }}>
               Four studios across Bangalore. One uncompromising standard. Handcrafted nail art, clinical precision, and an atmosphere designed to make you feel entirely seen.
             </p>
           </Reveal>
-          <Reveal delay={300}>
-            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link to="/contact" className="btn-primary">Book Appointment</Link>
+          <Reveal delay={240}>
+            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link to="/contact#booking-form" className="btn-primary">Book Appointment</Link>
               <Link to="/about" className="btn-ghost">About Us →</Link>
             </div>
           </Reveal>
-          <Reveal delay={400}>
-            <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.5), transparent)", maxWidth: 240, margin: "40px auto 0" }} />
+          <Reveal delay={320}>
+            <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.4), transparent)", maxWidth: 200, margin: "28px auto 0" }} />
           </Reveal>
         </div>
       </section>
 
       {/* ===== AS FEATURED IN ===== */}
-      <section style={{ background: "#F3EDE4", padding: "48px 5%" }}>
+      <section style={{ background: "#F3EDE4", padding: "56px 5%" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <Reveal>
-            <p className="eyebrow" style={{ textAlign: "center", display: "block" }}>As Seen In</p>
+            <div style={{ textAlign: "center", marginBottom: 24 }}>
+              <p style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: "0.65rem",
+                letterSpacing: "0.4em",
+                textTransform: "uppercase",
+                color: "#C9A456",
+                fontWeight: 500,
+                marginBottom: 12
+              }}>
+                As Seen In
+              </p>
+              <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.5), transparent)", maxWidth: 320, margin: "0 auto" }} />
+            </div>
           </Reveal>
-          <Reveal>
+          <Reveal delay={100}>
             <div style={{
-              borderTop: "1px solid rgba(201,164,86,0.25)",
-              borderBottom: "1px solid rgba(201,164,86,0.25)",
-              padding: "20px 0",
+              borderTop: "1px solid rgba(201,164,86,0.3)",
+              borderBottom: "1px solid rgba(201,164,86,0.3)",
+              padding: "28px 0",
               overflow: "hidden",
-              maskImage: "linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)",
+              maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
             }}>
               <div className="marquee-track">
                 {[...PRESS, ...PRESS, ...PRESS, ...PRESS].map((p, i) => (
                   <span
                     key={i}
-                    style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "1.5rem", color: "#A89880", whiteSpace: "nowrap", letterSpacing: "0.05em" }}
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontStyle: "italic",
+                      fontSize: "1.65rem",
+                      color: "#5C4A35",
+                      whiteSpace: "nowrap",
+                      letterSpacing: "0.08em",
+                      fontWeight: 400,
+                      transition: "color 0.3s ease",
+                    }}
                   >
                     {p}
                   </span>
@@ -262,10 +342,20 @@ function HomePage() {
               </div>
             </div>
           </Reveal>
-          <Reveal>
-            <div style={{ display: "flex", justifyContent: "center", gap: 32, marginTop: 24, flexWrap: "wrap" }}>
+          <Reveal delay={200}>
+            <div style={{ display: "flex", justifyContent: "center", gap: 40, marginTop: 28, flexWrap: "wrap" }}>
               {PRESS.map((p) => (
-                <span key={p} style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#A89880" }}>
+                <span
+                  key={p}
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.3em",
+                    textTransform: "uppercase",
+                    color: "#A89880",
+                    fontWeight: 500,
+                  }}
+                >
                   {p}
                 </span>
               ))}
@@ -274,13 +364,73 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ===== PROMISE ===== */}
-      <section className="section-pad" style={{ background: "#1A1208" }}>
+      {/* ===== SERVICES ===== */}
+      <section className="section-pad" id="services" style={{ background: "#FAF7F2" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <Reveal>
             <div style={{ textAlign: "center", marginBottom: 56 }}>
+              <span className="eyebrow">What We Create</span>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#1A1208", fontWeight: 400 }}>
+                Services{" "}
+                <em className="gradient-text" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 300 }}>
+                  We Offer.
+                </em>
+              </h2>
+              <GoldDivider />
+              <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.92rem", color: "#5C4A35", maxWidth: 460, margin: "0 auto" }}>
+                From quiet classics to bold editorial nail art — every treatment is executed to last.
+              </p>
+            </div>
+          </Reveal>
+
+          <div style={{ display: "grid", gap: 24 }}>
+            {SERVICES.map((s) => (
+              <Reveal key={s.name}>
+                <article
+                  className="glass-card"
+                  style={{ padding: "clamp(28px, 4vw, 48px)", transition: "transform 0.4s cubic-bezier(0.25,0.1,0.25,1), box-shadow 0.4s cubic-bezier(0.25,0.1,0.25,1)" }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+                    (e.currentTarget as HTMLElement).style.boxShadow = "0 24px 60px rgba(90,60,20,0.12)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                    (e.currentTarget as HTMLElement).style.boxShadow = "";
+                  }}
+                >
+                  <div className="card-gold-top" />
+                  <div style={{ marginBottom: 20 }}>
+                    <span className="eyebrow">{s.eyebrow}</span>
+                    <h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "clamp(1.4rem, 2.8vw, 2rem)", color: "#1A1208", marginTop: 4, fontWeight: 400 }}>
+                      <em className="gradient-text">{s.name}</em>
+                    </h3>
+                  </div>
+
+                  <p style={{ marginBottom: 24, fontSize: "0.9rem", color: "#5C4A35", lineHeight: 1.85, fontFamily: "var(--font-body)" }}>
+                    {s.desc}
+                  </p>
+
+                  <ServiceCarousel imgs={s.imgs} />
+
+                  <div style={{ marginTop: 28, textAlign: "center" }}>
+                    <Link to="/contact#booking-form" className="btn-outline-gold">
+                      Book {s.name} →
+                    </Link>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== OUR PROMISE (after services per Edit 3) ===== */}
+      <section className="section-pad" style={{ background: "#1A1208" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <Reveal>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
               <span className="eyebrow">Our Promise</span>
-              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#FAF7F2", fontWeight: 400 }}>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "#FAF7F2", fontWeight: 400 }}>
                 What Sets Our{" "}
                 <em style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 300, color: "#C9A456" }}>
                   Standard Apart.
@@ -306,14 +456,14 @@ function HomePage() {
                 body: "From the moment you arrive, the environment is designed for one thing: to make you feel that this hour belongs entirely to you.",
               },
             ].map((c, i) => (
-              <Reveal key={c.title} delay={i * 150}>
-                <div className="dark-card" style={{ padding: "40px 32px", height: "100%" }}>
+              <Reveal key={c.title} delay={i * 120}>
+                <div className="dark-card" style={{ padding: "36px 28px", height: "100%" }}>
                   <div className="card-gold-top" />
-                  <div style={{ fontSize: 28, marginBottom: 16, color: "#C9A456" }}>{c.icon}</div>
-                  <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontSize: "1.5rem", color: "#C9A456", marginBottom: 12 }}>
+                  <div style={{ fontSize: 28, marginBottom: 14, color: "#C9A456" }}>{c.icon}</div>
+                  <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontSize: "1.35rem", color: "#C9A456", marginBottom: 10 }}>
                     {c.title}
                   </h3>
-                  <p style={{ fontSize: "0.88rem", color: "rgba(250,247,242,0.7)", lineHeight: 1.85 }}>
+                  <p style={{ fontSize: "0.85rem", color: "rgba(250,247,242,0.7)", lineHeight: 1.8 }}>
                     {c.body}
                   </p>
                 </div>
@@ -323,97 +473,11 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ===== SERVICES ===== */}
-      <section className="section-pad" id="services" style={{ background: "#FAF7F2" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      {/* ===== ATELIER HOURS (enhanced per Edit 4) ===== */}
+      <section style={{ background: "#F3EDE4", padding: "32px 5% 80px" }}>
+        <div style={{ maxWidth: 580, margin: "0 auto" }}>
           <Reveal>
-            <div style={{ textAlign: "center", marginBottom: 64 }}>
-              <span className="eyebrow">What We Create</span>
-              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 5vw, 4rem)", color: "#1A1208", fontWeight: 400 }}>
-                Services{" "}
-                <em className="gradient-text" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 300 }}>
-                  We Offer.
-                </em>
-              </h2>
-              <GoldDivider />
-              <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.95rem", color: "#5C4A35", maxWidth: 480, margin: "0 auto" }}>
-                From quiet classics to bold editorial nail art — every treatment is executed to last.
-              </p>
-            </div>
-          </Reveal>
-
-          <div style={{ display: "grid", gap: 28 }}>
-            {SERVICES.map((s) => (
-              <Reveal key={s.name}>
-                <article
-                  className="glass-card"
-                  style={{ padding: "clamp(28px, 4vw, 48px)", transition: "transform 0.4s cubic-bezier(0.25,0.1,0.25,1), box-shadow 0.4s cubic-bezier(0.25,0.1,0.25,1)" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 24px 60px rgba(90,60,20,0.12)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "";
-                  }}
-                >
-                  <div className="card-gold-top" />
-                  <div style={{ marginBottom: 20 }}>
-                    <span className="eyebrow">{s.eyebrow}</span>
-                    <h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "clamp(1.5rem, 3vw, 2.2rem)", color: "#1A1208", marginTop: 4, fontWeight: 400 }}>
-                      <em className="gradient-text">{s.name}</em>
-                    </h3>
-                  </div>
-
-                  <p style={{ marginBottom: 24, fontSize: "0.9rem", color: "#5C4A35", lineHeight: 1.85, fontFamily: "var(--font-body)" }}>
-                    {s.desc}
-                  </p>
-
-                  <ServiceCarousel imgs={s.imgs} />
-
-                  <div style={{ marginTop: 28, textAlign: "center" }}>
-                    <Link to="/contact" className="btn-outline-gold">
-                      Book {s.name} →
-                    </Link>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== ATELIER HOURS ===== */}
-      <section style={{ background: "#F3EDE4", padding: "20px 5% 80px" }}>
-        <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <Reveal>
-            <div style={{
-              background: "rgba(255,255,255,0.7)",
-              backdropFilter: "blur(16px)",
-              border: "1px solid rgba(201,164,86,0.25)",
-              borderRadius: 16,
-              padding: "32px 48px",
-              textAlign: "center",
-              boxShadow: "0 8px 40px rgba(90,60,20,0.08)",
-              position: "relative",
-              overflow: "hidden",
-            }}>
-              <div className="card-gold-top" />
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.58rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#C9A456", marginBottom: 20 }}>
-                ✦ Atelier Hours ✦
-              </p>
-              <div style={{ display: "flex", gap: 16, alignItems: "center", justifyContent: "center", marginBottom: 16, flexWrap: "wrap" }}>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "0.88rem", color: "#5C4A35" }}>Monday – Sunday</span>
-                <span style={{ width: 1, height: 20, background: "rgba(201,164,86,0.3)" }} />
-                <span style={{ fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: "0.88rem", color: "#1A1208" }}>10:30 AM – 8:30 PM</span>
-              </div>
-              <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.78rem", color: "#A89880", marginBottom: 4 }}>
-                Walk-ins welcome. Appointments recommended.
-              </p>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "#A89880" }}>
-                Working hours may vary on public holidays.
-              </p>
-            </div>
+            <AtelierHoursCard />
           </Reveal>
         </div>
       </section>
@@ -422,9 +486,9 @@ function HomePage() {
       <section className="section-pad" style={{ background: "#1A1208" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <Reveal>
-            <div style={{ textAlign: "center", marginBottom: 56 }}>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
               <span className="eyebrow">Client Voices</span>
-              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#FAF7F2", fontWeight: 400 }}>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "#FAF7F2", fontWeight: 400 }}>
                 What Our{" "}
                 <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 300 }}>
                   Clients Say.
@@ -432,43 +496,43 @@ function HomePage() {
               </h2>
               <GoldDivider />
               <div style={{ marginTop: 12 }}>
-                <span className="gradient-text" style={{ fontFamily: "var(--font-serif)", fontSize: "3rem", fontWeight: 400 }}>5.0</span>
+                <span className="gradient-text" style={{ fontFamily: "var(--font-serif)", fontSize: "2.8rem", fontWeight: 400 }}>5.0</span>
                 {" "}
-                <span style={{ color: "#C9A456", fontSize: "1.2rem" }}>★★★★★</span>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8rem", color: "rgba(250,247,242,0.55)", marginTop: 4 }}>
+                <span style={{ color: "#C9A456", fontSize: "1.1rem" }}>★★★★★</span>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "0.78rem", color: "rgba(250,247,242,0.55)", marginTop: 4 }}>
                   Rated 5.0 across 551 verified Google reviews
                 </p>
               </div>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {REVIEWS.map((r, i) => (
               <Reveal key={r.name} delay={i * 80}>
-                <div className="dark-card" style={{ padding: "36px 32px", height: "100%" }}>
+                <div className="dark-card" style={{ padding: "32px 28px", height: "100%" }}>
                   <div className="card-gold-top" />
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
                     <Stars />
                     <span style={{
                       background: "linear-gradient(135deg, #4285F4 0%, #EA4335 50%, #FBBC05 75%, #34A853 100%)",
                       borderRadius: "50%",
-                      width: 26,
-                      height: 26,
+                      width: 24,
+                      height: 24,
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
                       color: "#fff",
                       fontWeight: 600,
-                      fontSize: "0.72rem",
+                      fontSize: "0.68rem",
                     }}>
                       G
                     </span>
                   </div>
-                  <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "1.05rem", color: "#FAF7F2", lineHeight: 1.75, marginBottom: 20 }}>
+                  <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "1rem", color: "#FAF7F2", lineHeight: 1.75, marginBottom: 18 }}>
                     "{r.text}"
                   </p>
-                  <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.3), transparent)", marginBottom: 14 }} />
-                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A456" }}>
+                  <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.3), transparent)", marginBottom: 12 }} />
+                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A456" }}>
                     — {r.name}
                   </p>
                 </div>
@@ -482,6 +546,8 @@ function HomePage() {
         nextTo="/about"
         nextLabel="Explore About & Gallery →"
         teaser="Discover the story and craft behind our studios."
+        pageNumber={1}
+        totalPages={6}
       />
     </SiteLayout>
   );

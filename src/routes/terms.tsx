@@ -83,26 +83,26 @@ function TermsPage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(100px, 14vw, 160px)",
-          paddingBottom: "clamp(60px, 10vw, 100px)",
+          paddingTop: "clamp(80px, 12vw, 140px)",
+          paddingBottom: "clamp(60px, 10vw, 120px)",
           paddingLeft: "5%",
           paddingRight: "5%",
           background: "linear-gradient(135deg, #1A1208 0%, #2A1F12 50%, #1A1208 100%)",
         }}
       >
         <Particles count={10} />
-        <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <Reveal>
-            <span className="eyebrow" style={{ color: "#C9A456" }}>Legal · Effective January 2026</span>
+            <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 10, display: "block" }}>Legal · Effective January 2026</span>
           </Reveal>
-          <Reveal delay={100}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 7vw, 5.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
+          <Reveal delay={80}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 6vw, 4.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
               Terms &amp;{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Conditions.</em>
             </h1>
           </Reveal>
-          <Reveal delay={200}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "rgba(250,247,242,0.8)", maxWidth: 520, margin: "20px auto 0", lineHeight: 1.85 }}>
+          <Reveal delay={160}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.92rem", color: "rgba(250,247,242,0.8)", maxWidth: 480, margin: "16px auto 0", lineHeight: 1.85 }}>
               The simple, mutual understandings that protect every guest and every artist across our four studios.
             </p>
           </Reveal>
@@ -110,15 +110,15 @@ function TermsPage() {
       </section>
 
       {/* ===== TERMS CONTENT ===== */}
-      <section className="section-pad" style={{ background: "#FAF7F2", paddingTop: 60 }}>
+      <section className="section-pad" style={{ background: "#FAF7F2", paddingTop: 56 }}>
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
-          <div style={{ display: "grid", gap: 20 }}>
+          <div style={{ display: "grid", gap: 18 }}>
             {CLAUSES.map((c, i) => (
               <Reveal key={c.t} delay={i * 40}>
                 <article
                   className="glass-card"
                   style={{
-                    padding: "clamp(28px, 4vw, 40px)",
+                    padding: "clamp(26px, 3.5vw, 36px)",
                     position: "relative",
                     overflow: "hidden",
                   }}
@@ -127,10 +127,10 @@ function TermsPage() {
                   <h2
                     style={{
                       fontFamily: "var(--font-serif)",
-                      fontSize: "clamp(1.15rem, 2.5vw, 1.5rem)",
+                      fontSize: "clamp(1.1rem, 2.2vw, 1.35rem)",
                       color: "#C9A456",
                       fontWeight: 400,
-                      marginBottom: 16,
+                      marginBottom: 14,
                     }}
                   >
                     {c.t}
@@ -138,7 +138,7 @@ function TermsPage() {
                   <p
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: "0.92rem",
+                      fontSize: "0.9rem",
                       color: "#5C4A35",
                       lineHeight: 1.85,
                     }}
@@ -151,31 +151,7 @@ function TermsPage() {
         </div>
       </section>
 
-      {/* ===== CONTACT CTA ===== */}
-      <section className="section-pad" style={{ background: "#F3EDE4" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-          <Reveal>
-            <span className="eyebrow">Questions?</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#1A1208", fontWeight: 400, fontStyle: "italic", marginTop: 8 }}>
-              We're <em className="gradient-text" style={{ fontFamily: "var(--font-serif)" }}>Here to Help.</em>
-            </h2>
-            <GoldDivider />
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "#5C4A35", lineHeight: 1.85, marginBottom: 28 }}>
-              If you have any questions about our terms or policies, our concierge team is happy to assist.
-            </p>
-            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link to="/contact" className="btn-primary">
-                Contact Us →
-              </Link>
-              <Link to="/privacy" className="btn-outline-gold">
-              Read Privacy Policy
-            </Link>
-          </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <PageFooterNav nextTo="/privacy" nextLabel="Privacy Policy →" teaser="Understand how we protect and handle your personal information." />
+      <PageFooterNav nextTo="/privacy" nextLabel="Privacy Policy →" teaser="Understand how we protect and handle your personal information." pageNumber={5} totalPages={6} />
     </SiteLayout>
   );
 }
