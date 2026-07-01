@@ -6,7 +6,7 @@ import img_manicure1 from "@/assets/c612e651df488d64a48ce23eda24ce18.jpg.asset.j
 import img_manicure2 from "@/assets/8b16ce6e0c96ffe6d6a5b61f3124313e.jpg.asset.json";
 import img_manicure3 from "@/assets/9cf2a71738b3eedb94727905b550a3a6.jpg.asset.json";
 import img_pedicure1 from "@/assets/156b33ce3f1b839cb9a2561e1211df0e.jpg.asset.json";
-import heroImg from "@/assets/2666d7e6f967f90d474f618f05c4734e.jpg";
+import heroImg from "@/assets/1782536277899.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -198,7 +198,7 @@ function HomePage() {
         }}
       >
         <img
-          src={heroImg}
+          src={heroImg.url}
           alt=""
           aria-hidden="true"
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: -2 }}
