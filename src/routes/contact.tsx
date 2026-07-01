@@ -182,21 +182,25 @@ function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "10px 18px",
+                      borderRadius: 6,
+                      background: "#1A1208",
+                      color: "#F3EDE4",
                       fontFamily: "var(--font-sans)",
                       fontSize: "0.62rem",
                       letterSpacing: "0.25em",
                       textTransform: "uppercase",
-                      color: "#C9A456",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 6,
+                      border: "1px solid #1A1208",
                     }}
                   >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                       <circle cx="12" cy="10" r="3" />
                     </svg>
-                    View on Map →
+                    View on Map
                   </a>
                 </div>
               </Reveal>
