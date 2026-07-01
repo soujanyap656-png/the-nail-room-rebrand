@@ -1,12 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
-import { SiteLayout, GoldDivider, Stars, PageFooterNav, Particles } from "@/components/site/Layout";
+import { SiteLayout, GoldDivider, Stars, PageFooterNav, Reveal as _Unused } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
-import img_manicure1 from "@/assets/c612e651df488d64a48ce23eda24ce18.jpg.asset.json";
-import img_manicure2 from "@/assets/8b16ce6e0c96ffe6d6a5b61f3124313e.jpg.asset.json";
-import img_manicure3 from "@/assets/9cf2a71738b3eedb94727905b550a3a6.jpg.asset.json";
-import img_pedicure1 from "@/assets/156b33ce3f1b839cb9a2561e1211df0e.jpg.asset.json";
-import heroImg from "@/assets/1782536277899.png.asset.json";
+import heroImg from "@/assets/home-hero.jpg.asset.json";
+
+void _Unused;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,14 +28,18 @@ export const SERVICES: Array<{
     name: "Manicure",
     eyebrow: "The Classic",
     desc: "Our manicure services include shaping, buffing, cuticle care, hand massage, and your choice of polish or gel application.",
-    imgs: [img_manicure1.url, img_manicure2.url, img_manicure3.url],
+    imgs: [
+      `${SUPA}/b25825c0-f41e-49f8-9025-8d49f6384b9c.jpg`,
+      `${SUPA}/35301d13-4771-466f-83fb-b5514993a720.jpg`,
+      `${SUPA}/3d51f9f5-967b-4140-a492-2fe98dcd15ff.jpg`,
+    ],
   },
   {
     name: "Pedicure",
     eyebrow: "The Ritual",
     desc: "Treat your feet with our pedicure services, which include a foot soak, callus removal, nail care, and a relaxing massage.",
     imgs: [
-      img_pedicure1.url,
+      `${SUPA}/fdc29149-be9a-4ba2-924c-50685eed8fc9.jpg`,
       `${SUPA}/e7c96d54-d3bd-4d5e-99d8-7eb1762f6e7f.jpg`,
       `${SUPA}/94bc0b53-de76-41ea-a9c5-f8177c232034.jpg`,
     ],
@@ -137,16 +139,15 @@ function ServiceCarousel({ imgs }: { imgs: string[] }) {
     setIdx(i);
     const el = scrollRef.current;
     if (!el) return;
-    const child = el.children[i] as HTMLElement;
+    const child = el.children[i] as HTMLElement | undefined;
     if (child) el.scrollTo({ left: child.offsetLeft, behavior: "smooth" });
   };
 
   const handleScroll = () => {
     const el = scrollRef.current;
     if (!el) return;
-    const scrollLeft = el.scrollLeft;
-    const itemWidth = (el.children[0] as HTMLElement)?.offsetWidth ?? 1;
-    setIdx(Math.round(scrollLeft / (itemWidth + 12)));
+    const itemWidth = (el.children[0] as HTMLElement | undefined)?.offsetWidth ?? 1;
+    setIdx(Math.round(el.scrollLeft / (itemWidth + 12)));
   };
 
   return (
@@ -191,8 +192,8 @@ function HomePage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(100px, 14vw, 160px)",
-          paddingBottom: "clamp(80px, 12vw, 140px)",
+          paddingTop: "clamp(88px, 12vw, 130px)",
+          paddingBottom: "clamp(72px, 10vw, 120px)",
           paddingLeft: "5%",
           paddingRight: "5%",
         }}
@@ -204,125 +205,160 @@ function HomePage() {
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: -2 }}
           loading="eager"
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(18,13,6,0.72) 0%, rgba(18,13,6,0.28) 50%, rgba(18,13,6,0.82) 100%)", zIndex: -1 }} />
-        <Particles count={14} />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, rgba(18,13,6,0.45) 0%, rgba(18,13,6,0.25) 45%, rgba(18,13,6,0.88) 100%)",
+            zIndex: -1,
+          }}
+        />
 
-        <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
+        {/* Corner info tabs */}
+        <div
+          style={{
+            position: "absolute",
+            top: 92,
+            right: "5%",
+            display: "flex",
+            gap: 12,
+            zIndex: 2,
+            flexWrap: "wrap",
+            justifyContent: "flex-end",
+            maxWidth: "90%",
+          }}
+        >
+          <div
+            style={{
+              background: "rgba(18,13,6,0.55)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(201,164,86,0.35)",
+              borderRadius: 10,
+              padding: "10px 14px",
+              minWidth: 148,
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C9A456" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.52rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#C9A456" }}>Working Time</span>
+            </div>
+            <div style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", color: "#FAF7F2", letterSpacing: "0.02em" }}>10:00 AM – 9:00 PM</div>
+          </div>
+          <a
+            href="tel:+917204184033"
+            style={{
+              background: "rgba(18,13,6,0.55)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(201,164,86,0.35)",
+              borderRadius: 10,
+              padding: "10px 14px",
+              minWidth: 148,
+              display: "block",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C9A456" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.52rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "#C9A456" }}>Get in Touch</span>
+            </div>
+            <div style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", color: "#FAF7F2", letterSpacing: "0.02em" }}>+91 72041 84033</div>
+          </a>
+        </div>
+
+        <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1, paddingTop: 40 }}>
           <Reveal>
-            <span className="eyebrow" style={{ color: "#C9A456" }}>Bangalore's Nail Atelier</span>
+            <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 10 }}>Bangalore's Nail Atelier</span>
           </Reveal>
-          <Reveal delay={100}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem, 8vw, 6.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, marginBottom: 20, color: "#FAF7F2" }}>
+          <Reveal delay={80}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 6.5vw, 5.4rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.02, marginBottom: 14, color: "#FAF7F2" }}>
               The Art of the{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Statement</em>{" "}
               Nail.
             </h1>
           </Reveal>
-          <Reveal delay={200}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.98rem", color: "rgba(250,247,242,0.85)", maxWidth: 520, margin: "0 auto 32px", lineHeight: 1.9 }}>
-              Four studios across Bangalore. One uncompromising standard. Handcrafted nail art, clinical precision, and an atmosphere designed to make you feel entirely seen.
+          <Reveal delay={160}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "rgba(250,247,242,0.9)", maxWidth: 520, margin: "0 auto 22px", lineHeight: 1.75 }}>
+              Four studios across Bangalore. One uncompromising standard. Handcrafted nail art and clinical precision.
             </p>
           </Reveal>
-          <Reveal delay={300}>
-            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link to="/contact" className="btn-primary">Book Appointment</Link>
+          <Reveal delay={220}>
+            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link to="/contact" hash="booking-form" className="btn-primary">Reserve My Visit</Link>
               <Link to="/about" className="btn-ghost">About Us →</Link>
             </div>
-          </Reveal>
-          <Reveal delay={400}>
-            <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.5), transparent)", maxWidth: 240, margin: "40px auto 0" }} />
           </Reveal>
         </div>
       </section>
 
-      {/* ===== AS FEATURED IN ===== */}
-      <section style={{ background: "#F3EDE4", padding: "48px 5%" }}>
+      {/* ===== AS FEATURED IN — highlighted trust bar ===== */}
+      <section style={{ background: "#1A1208", padding: "48px 5%" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <Reveal>
-            <p className="eyebrow" style={{ textAlign: "center", display: "block" }}>As Seen In</p>
-          </Reveal>
-          <Reveal>
-            <div style={{
-              borderTop: "1px solid rgba(201,164,86,0.25)",
-              borderBottom: "1px solid rgba(201,164,86,0.25)",
-              padding: "20px 0",
-              overflow: "hidden",
-              maskImage: "linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)",
+          <div style={{ textAlign: "center" }}>
+            <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #C9A456, transparent)", width: 100, margin: "0 auto 16px" }} />
+            <p style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.78rem",
+              letterSpacing: "0.5em",
+              textTransform: "uppercase",
+              color: "#C9A456",
+              fontWeight: 600,
+              marginBottom: 4,
             }}>
-              <div className="marquee-track">
-                {[...PRESS, ...PRESS, ...PRESS, ...PRESS].map((p, i) => (
-                  <span
-                    key={i}
-                    style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "1.5rem", color: "#A89880", whiteSpace: "nowrap", letterSpacing: "0.05em" }}
-                  >
-                    {p}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-          <Reveal>
-            <div style={{ display: "flex", justifyContent: "center", gap: 32, marginTop: 24, flexWrap: "wrap" }}>
-              {PRESS.map((p) => (
-                <span key={p} style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#A89880" }}>
+              As Seen In
+            </p>
+            <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #C9A456, transparent)", width: 100, margin: "16px auto 28px" }} />
+          </div>
+
+          <div style={{
+            overflow: "hidden",
+            maskImage: "linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)",
+            marginBottom: 24,
+          }}>
+            <div className="marquee-track">
+              {[...PRESS, ...PRESS, ...PRESS, ...PRESS].map((p, i) => (
+                <span
+                  key={i}
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    fontStyle: "italic",
+                    fontSize: "1.9rem",
+                    color: "#E8CC8A",
+                    whiteSpace: "nowrap",
+                    letterSpacing: "0.06em",
+                    fontWeight: 500,
+                  }}
+                >
                   {p}
                 </span>
               ))}
             </div>
-          </Reveal>
-        </div>
-      </section>
+          </div>
 
-      {/* ===== PROMISE ===== */}
-      <section className="section-pad" style={{ background: "#1A1208" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <Reveal>
-            <div style={{ textAlign: "center", marginBottom: 56 }}>
-              <span className="eyebrow">Our Promise</span>
-              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#FAF7F2", fontWeight: 400 }}>
-                What Sets Our{" "}
-                <em style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 300, color: "#C9A456" }}>
-                  Standard Apart.
-                </em>
-              </h2>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: "◆",
-                title: "Curated Materials",
-                body: "We work exclusively with salon-grade gel systems, dermatologist-approved products, and single-use implements — so every visit is as clean as it is beautiful.",
-              },
-              {
-                icon: "✎",
-                title: "Artist-Level Craft",
-                body: "Our nail artists don't follow trends — they interpret them. Each set is treated as a composition, balanced for your hand shape, skin tone, and personal aesthetic.",
-              },
-              {
-                icon: "✿",
-                title: "A Ritual, Not a Task",
-                body: "From the moment you arrive, the environment is designed for one thing: to make you feel that this hour belongs entirely to you.",
-              },
-            ].map((c, i) => (
-              <Reveal key={c.title} delay={i * 150}>
-                <div className="dark-card" style={{ padding: "40px 32px", height: "100%" }}>
-                  <div className="card-gold-top" />
-                  <div style={{ fontSize: 28, marginBottom: 16, color: "#C9A456" }}>{c.icon}</div>
-                  <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontSize: "1.5rem", color: "#C9A456", marginBottom: 12 }}>
-                    {c.title}
-                  </h3>
-                  <p style={{ fontSize: "0.88rem", color: "rgba(250,247,242,0.7)", lineHeight: 1.85 }}>
-                    {c.body}
-                  </p>
-                </div>
-              </Reveal>
+          <div style={{ display: "flex", justifyContent: "center", gap: 36, flexWrap: "wrap" }}>
+            {PRESS.map((p) => (
+              <span
+                key={p}
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "0.82rem",
+                  letterSpacing: "0.32em",
+                  textTransform: "uppercase",
+                  color: "rgba(232,204,138,0.85)",
+                  fontWeight: 600,
+                  transition: "opacity 0.3s ease, color 0.3s ease",
+                  cursor: "default",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#E8CC8A"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(232,204,138,0.85)"; }}
+              >
+                {p}
+              </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== SERVICES ===== */}
+      {/* ===== SERVICES (moved BEFORE Promise) ===== */}
       <section className="section-pad" id="services" style={{ background: "#FAF7F2" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <Reveal>
@@ -344,18 +380,7 @@ function HomePage() {
           <div style={{ display: "grid", gap: 28 }}>
             {SERVICES.map((s) => (
               <Reveal key={s.name}>
-                <article
-                  className="glass-card"
-                  style={{ padding: "clamp(28px, 4vw, 48px)", transition: "transform 0.4s cubic-bezier(0.25,0.1,0.25,1), box-shadow 0.4s cubic-bezier(0.25,0.1,0.25,1)" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 24px 60px rgba(90,60,20,0.12)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "";
-                  }}
-                >
+                <article className="glass-card" style={{ padding: "clamp(28px, 4vw, 48px)" }}>
                   <div className="card-gold-top" />
                   <div style={{ marginBottom: 20 }}>
                     <span className="eyebrow">{s.eyebrow}</span>
@@ -371,7 +396,7 @@ function HomePage() {
                   <ServiceCarousel imgs={s.imgs} />
 
                   <div style={{ marginTop: 28, textAlign: "center" }}>
-                    <Link to="/contact" className="btn-outline-gold">
+                    <Link to="/contact" hash="booking-form" className="btn-outline-gold">
                       Book {s.name} →
                     </Link>
                   </div>
@@ -382,35 +407,101 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ===== ATELIER HOURS ===== */}
-      <section style={{ background: "#F3EDE4", padding: "20px 5% 80px" }}>
-        <div style={{ maxWidth: 600, margin: "0 auto" }}>
+      {/* ===== OUR PROMISE (now AFTER services) ===== */}
+      <section className="section-pad" style={{ background: "#1A1208" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <Reveal>
-            <div style={{
-              background: "rgba(255,255,255,0.7)",
-              backdropFilter: "blur(16px)",
-              border: "1px solid rgba(201,164,86,0.25)",
-              borderRadius: 16,
-              padding: "32px 48px",
-              textAlign: "center",
-              boxShadow: "0 8px 40px rgba(90,60,20,0.08)",
-              position: "relative",
-              overflow: "hidden",
-            }}>
+            <div style={{ textAlign: "center", marginBottom: 56 }}>
+              <span className="eyebrow">Our Promise</span>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#FAF7F2", fontWeight: 400 }}>
+                What Sets Our{" "}
+                <em style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 300, color: "#C9A456" }}>
+                  Standard Apart.
+                </em>
+              </h2>
+            </div>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: "◆", title: "Curated Materials", body: "We work exclusively with salon-grade gel systems, dermatologist-approved products, and single-use implements — so every visit is as clean as it is beautiful." },
+              { icon: "✎", title: "Artist-Level Craft", body: "Our nail artists don't follow trends — they interpret them. Each set is treated as a composition, balanced for your hand shape, skin tone, and personal aesthetic." },
+              { icon: "✿", title: "A Ritual, Not a Task", body: "From the moment you arrive, the environment is designed for one thing: to make you feel that this hour belongs entirely to you." },
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 150}>
+                <div className="dark-card" style={{ padding: "40px 32px", height: "100%" }}>
+                  <div className="card-gold-top" />
+                  <div style={{ fontSize: 28, marginBottom: 16, color: "#C9A456" }}>{c.icon}</div>
+                  <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontSize: "1.5rem", color: "#C9A456", marginBottom: 12 }}>{c.title}</h3>
+                  <p style={{ fontSize: "0.88rem", color: "rgba(250,247,242,0.7)", lineHeight: 1.85 }}>{c.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ATELIER HOURS — featured card w/ animation ===== */}
+      <section style={{ background: "#F3EDE4", padding: "80px 5%" }}>
+        <div style={{ maxWidth: 620, margin: "0 auto" }}>
+          <Reveal>
+            <div
+              style={{
+                background: "linear-gradient(135deg, #1A1208 0%, #241A0C 100%)",
+                border: "1px solid rgba(201,164,86,0.45)",
+                borderRadius: 20,
+                padding: "44px 48px",
+                textAlign: "center",
+                boxShadow: "0 24px 60px rgba(18,13,6,0.25), inset 0 1px 0 rgba(232,204,138,0.15)",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
               <div className="card-gold-top" />
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.58rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#C9A456", marginBottom: 20 }}>
+
+              {/* Animated gold ring around a pulsing dot */}
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: 22 }}>
+                <div style={{ position: "relative", width: 56, height: 56 }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      borderRadius: "50%",
+                      border: "1px solid rgba(201,164,86,0.35)",
+                      borderTopColor: "#E8CC8A",
+                      borderRightColor: "#C9A456",
+                      animation: "tnr-ring 6s linear infinite",
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      width: 10,
+                      height: 10,
+                      borderRadius: "50%",
+                      background: "#E8CC8A",
+                      boxShadow: "0 0 12px rgba(232,204,138,0.7)",
+                      animation: "tnr-pulse 2.2s ease-in-out infinite",
+                    }}
+                  />
+                </div>
+              </div>
+
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "#C9A456", marginBottom: 10 }}>
                 ✦ Atelier Hours ✦
               </p>
-              <div style={{ display: "flex", gap: 16, alignItems: "center", justifyContent: "center", marginBottom: 16, flexWrap: "wrap" }}>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "0.88rem", color: "#5C4A35" }}>Monday – Sunday</span>
-                <span style={{ width: 1, height: 20, background: "rgba(201,164,86,0.3)" }} />
-                <span style={{ fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: "0.88rem", color: "#1A1208" }}>10:30 AM – 8:30 PM</span>
+              <h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "1.6rem", color: "#FAF7F2", fontWeight: 400, marginBottom: 14 }}>
+                Open Daily
+              </h3>
+              <div style={{ display: "flex", gap: 14, alignItems: "center", justifyContent: "center", marginBottom: 12, flexWrap: "wrap" }}>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "0.88rem", color: "rgba(250,247,242,0.75)" }}>Monday – Sunday</span>
+                <span style={{ width: 1, height: 18, background: "rgba(201,164,86,0.35)" }} />
+                <span style={{ fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: "0.92rem", color: "#E8CC8A", letterSpacing: "0.05em" }}>10:30 AM – 8:30 PM</span>
               </div>
-              <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.78rem", color: "#A89880", marginBottom: 4 }}>
+              <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.78rem", color: "rgba(250,247,242,0.55)" }}>
                 Walk-ins welcome. Appointments recommended.
-              </p>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "#A89880" }}>
-                Working hours may vary on public holidays.
               </p>
             </div>
           </Reveal>
@@ -431,8 +522,7 @@ function HomePage() {
               </h2>
               <GoldDivider />
               <div style={{ marginTop: 12 }}>
-                <span className="gradient-text" style={{ fontFamily: "var(--font-serif)", fontSize: "3rem", fontWeight: 400 }}>5.0</span>
-                {" "}
+                <span className="gradient-text" style={{ fontFamily: "var(--font-serif)", fontSize: "3rem", fontWeight: 400 }}>5.0</span>{" "}
                 <span style={{ color: "#C9A456", fontSize: "1.2rem" }}>★★★★★</span>
                 <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8rem", color: "rgba(250,247,242,0.55)", marginTop: 4 }}>
                   Rated 5.0 across 551 verified Google reviews
@@ -448,20 +538,7 @@ function HomePage() {
                   <div className="card-gold-top" />
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
                     <Stars />
-                    <span style={{
-                      background: "linear-gradient(135deg, #4285F4 0%, #EA4335 50%, #FBBC05 75%, #34A853 100%)",
-                      borderRadius: "50%",
-                      width: 26,
-                      height: 26,
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#fff",
-                      fontWeight: 600,
-                      fontSize: "0.72rem",
-                    }}>
-                      G
-                    </span>
+                    <span style={{ background: "linear-gradient(135deg, #4285F4 0%, #EA4335 50%, #FBBC05 75%, #34A853 100%)", borderRadius: "50%", width: 26, height: 26, display: "inline-flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 600, fontSize: "0.72rem" }}>G</span>
                   </div>
                   <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "1.05rem", color: "#FAF7F2", lineHeight: 1.75, marginBottom: 20 }}>
                     "{r.text}"
@@ -481,6 +558,7 @@ function HomePage() {
         nextTo="/about"
         nextLabel="Explore About & Gallery →"
         teaser="Discover the story and craft behind our studios."
+        pageIndex={2}
       />
     </SiteLayout>
   );
