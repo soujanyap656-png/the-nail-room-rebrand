@@ -175,7 +175,7 @@ function TermsPage() {
         </div>
       </section>
 
-      <PageFooterNav nextTo="/privacy" nextLabel="Privacy Policy →" teaser="Understand how we protect and handle your personal information." />
+      <PageFooterNav nextTo="/privacy" nextLabel="Privacy Policy →" teaser={"Understand how we protect and handle your personal information."} pageIndex={6} />
     </SiteLayout>
   );
 }

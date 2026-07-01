@@ -160,7 +160,7 @@ function PrivacyPage() {
         </div>
       </section>
 
-      <PageFooterNav nextTo="/" nextLabel="Return Home →" teaser="Begin your journey at The Nail Room." />
+      <PageFooterNav nextTo="/" nextLabel="Return Home →" teaser={"Begin your journey at The Nail Room."} pageIndex={1} />
     </SiteLayout>
   );
 }

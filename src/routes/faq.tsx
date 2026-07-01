@@ -210,7 +210,7 @@ function FAQPage() {
         </div>
       </section>
 
-      <PageFooterNav nextTo="/terms" nextLabel="Terms of Service →" teaser="Review our policies, guarantees, and service terms." />
+      <PageFooterNav nextTo="/terms" nextLabel="Terms of Service →" teaser={"Review our policies, guarantees, and service terms."} pageIndex={5} />
     </SiteLayout>
   );
 }

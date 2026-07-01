@@ -354,7 +354,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <PageFooterNav nextTo="/faq" nextLabel="Visit FAQ →" teaser="Have questions? Find answers to common inquiries." />
+      <PageFooterNav nextTo="/faq" nextLabel="Visit FAQ →" teaser={"Have questions? Find answers to common inquiries."} pageIndex={4} />
     </SiteLayout>
   );
 }
