@@ -348,9 +348,27 @@ function ContactPage() {
                     <label htmlFor="notes">Notes for your artist (optional)</label>
                   </div>
 
-                  <button type="submit" className="btn-primary" style={{ width: "100%", marginTop: 24 }}>
-                    ✦ Reserve My Visit →
+                  <button
+                    type="submit"
+                    className="btn-primary"
+                    style={{ width: "100%", marginTop: 24, opacity: status === "loading" ? 0.75 : 1, cursor: status === "loading" ? "wait" : "pointer" }}
+                    disabled={status === "loading"}
+                  >
+                    {status === "loading" ? (
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+                        <span style={{ display: "inline-block", width: 12, height: 12, border: "2px solid rgba(26,18,8,0.25)", borderTopColor: "#1A1208", borderRadius: "50%", animation: "tnr-spin 0.8s linear infinite" }} />
+                        Sending your request…
+                      </span>
+                    ) : (
+                      <>✦ Reserve My Visit →</>
+                    )}
                   </button>
+
+                  {status === "error" && (
+                    <p style={{ marginTop: 14, textAlign: "center", fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "#8B4A3E", background: "rgba(139,74,62,0.08)", border: "1px solid rgba(139,74,62,0.25)", padding: "10px 14px", borderRadius: 6 }}>
+                      Something went wrong — please try again.
+                    </p>
+                  )}
 
                   <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.78rem", color: "#A89880", textAlign: "center", marginTop: 16 }}>
                     By submitting, you agree to our{" "}
