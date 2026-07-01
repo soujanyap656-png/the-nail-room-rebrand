@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { SiteLayout, GoldDivider, PageFooterNav, Particles } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
+import contactVideo from "@/assets/contact-hero.mp4.asset.json";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
