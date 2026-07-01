@@ -1,10 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
-import { SiteLayout, GoldDivider, Stars, PageFooterNav, Reveal as _Unused } from "@/components/site/Layout";
+import { SiteLayout, GoldDivider, Stars, PageFooterNav } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 import heroImg from "@/assets/home-hero.jpg.asset.json";
-
-void _Unused;
 
 export const Route = createFileRoute("/")({
   head: () => ({
