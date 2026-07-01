@@ -60,29 +60,35 @@ const SERVICES = [
 ];
 
 function ContactPage() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [vals, setVals] = useState<Record<string, string>>({
-    name: "",
-    email: "",
-    phone: "",
-    loc: "",
-    service: "",
-    date: "",
-    notes: "",
+    name: "", email: "", phone: "", loc: "", service: "", date: "", notes: "",
   });
 
   const set = (k: string, v: string) => setVals((p) => ({ ...p, [k]: v }));
   const err = (k: string) => touched[k] && !vals[k];
 
-  const submit = (e: FormEvent) => {
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
     const required = ["name", "email", "phone", "loc", "service", "date"];
     const t: Record<string, boolean> = {};
     required.forEach((r) => (t[r] = true));
     setTouched(t);
-    if (required.every((r) => vals[r])) setSent(true);
+    if (!required.every((r) => vals[r])) return;
+
+    setStatus("loading");
+    // TODO: replace with real API call. Simulated result below.
+    try {
+      await new Promise((res) => setTimeout(res, 1400));
+      // Simulate success (swap for actual response handling later)
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
+
+  const sent = status === "success";
 
   return (
     <SiteLayout>
@@ -91,27 +97,32 @@ function ContactPage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(100px, 14vw, 160px)",
-          paddingBottom: "clamp(60px, 10vw, 100px)",
+          paddingTop: "clamp(88px, 12vw, 130px)",
+          paddingBottom: "clamp(48px, 7vw, 80px)",
           paddingLeft: "5%",
           paddingRight: "5%",
-          background: "linear-gradient(135deg, #1A1208 0%, #2A1F12 50%, #1A1208 100%)",
         }}
       >
-        <Particles count={10} />
+        <video
+          src={contactVideo.url}
+          autoPlay muted loop playsInline
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: -2 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(18,13,6,0.55) 0%, rgba(18,13,6,0.3) 45%, rgba(18,13,6,0.9) 100%)", zIndex: -1 }} />
+        <Particles count={8} />
         <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <Reveal>
-            <span className="eyebrow" style={{ color: "#C9A456" }}>Reserve · Inquire · Visit</span>
+            <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 12 }}>Reserve · Inquire · Visit</span>
           </Reveal>
-          <Reveal delay={100}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 7vw, 5.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
+          <Reveal delay={80}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 5.5vw, 4.4rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.05, color: "#FAF7F2", margin: "0 0 14px" }}>
               Our{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Studios.</em>
             </h1>
           </Reveal>
-          <Reveal delay={200}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "rgba(250,247,242,0.8)", maxWidth: 520, margin: "20px auto 0", lineHeight: 1.85 }}>
-              Four ateliers across Bangalore. One uncompromising standard. Speak with our concierge or reserve through our booking portal.
+          <Reveal delay={160}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.94rem", color: "rgba(250,247,242,0.85)", maxWidth: 520, margin: "0 auto", lineHeight: 1.8 }}>
+              Four ateliers across Bangalore. One uncompromising standard.
             </p>
           </Reveal>
         </div>
