@@ -135,32 +135,8 @@ function PrivacyPage() {
         </div>
       </section>
 
-      {/* ===== CONTACT CTA ===== */}
-      <section className="section-pad" style={{ background: "#F3EDE4" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-          <Reveal>
-            <span className="eyebrow">Have Questions?</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#1A1208", fontWeight: 400, fontStyle: "italic", marginTop: 8 }}>
-              Your Privacy{" "}
-              <em className="gradient-text" style={{ fontFamily: "var(--font-serif)" }}>Matters.</em>
-            </h2>
-            <GoldDivider />
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "#5C4A35", lineHeight: 1.85, marginBottom: 28 }}>
-              If you have any questions about how we handle your data, email our concierge team.
-            </p>
-            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link to="/contact" className="btn-primary">
-                Contact Us →
-              </Link>
-              <a href="mailto:hello@nailroombangalore.com" className="btn-outline-gold">
-                Email Concierge
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
-      <PageFooterNav nextTo="/" nextLabel="Return Home →" teaser="Begin your journey at The Nail Room." />
+      <PageFooterNav nextTo="/" nextLabel="Return Home →" teaser={"Begin your journey at The Nail Room."} pageIndex={1} />
     </SiteLayout>
   );
 }

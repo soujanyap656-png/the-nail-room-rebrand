@@ -324,11 +324,7 @@ function AboutGalleryPage() {
         </div>
       </section>
 
-      <PageFooterNav
-        nextTo="/contact"
-        nextLabel="Book Appointment"
-        teaser="Ready to experience Bangalore's finest nail atelier?"
-      />
+      <PageFooterNav nextTo="/contact" nextLabel="Book Appointment" teaser={"Ready to experience Bangalore's finest nail atelier?"} pageIndex={3} />
     </SiteLayout>
   );
 }

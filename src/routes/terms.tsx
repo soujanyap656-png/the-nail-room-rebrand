@@ -151,31 +151,8 @@ function TermsPage() {
         </div>
       </section>
 
-      {/* ===== CONTACT CTA ===== */}
-      <section className="section-pad" style={{ background: "#F3EDE4" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-          <Reveal>
-            <span className="eyebrow">Questions?</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#1A1208", fontWeight: 400, fontStyle: "italic", marginTop: 8 }}>
-              We're <em className="gradient-text" style={{ fontFamily: "var(--font-serif)" }}>Here to Help.</em>
-            </h2>
-            <GoldDivider />
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "#5C4A35", lineHeight: 1.85, marginBottom: 28 }}>
-              If you have any questions about our terms or policies, our concierge team is happy to assist.
-            </p>
-            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link to="/contact" className="btn-primary">
-                Contact Us →
-              </Link>
-              <Link to="/privacy" className="btn-outline-gold">
-              Read Privacy Policy
-            </Link>
-          </div>
-          </Reveal>
-        </div>
-      </section>
 
-      <PageFooterNav nextTo="/privacy" nextLabel="Privacy Policy →" teaser="Understand how we protect and handle your personal information." />
+      <PageFooterNav nextTo="/privacy" nextLabel="Privacy Policy →" teaser={"Understand how we protect and handle your personal information."} pageIndex={6} />
     </SiteLayout>
   );
 }

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { SiteLayout, GoldDivider, PageFooterNav, Particles } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
+import contactVideo from "@/assets/contact-hero.mp4.asset.json";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -59,29 +60,35 @@ const SERVICES = [
 ];
 
 function ContactPage() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [vals, setVals] = useState<Record<string, string>>({
-    name: "",
-    email: "",
-    phone: "",
-    loc: "",
-    service: "",
-    date: "",
-    notes: "",
+    name: "", email: "", phone: "", loc: "", service: "", date: "", notes: "",
   });
 
   const set = (k: string, v: string) => setVals((p) => ({ ...p, [k]: v }));
   const err = (k: string) => touched[k] && !vals[k];
 
-  const submit = (e: FormEvent) => {
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
     const required = ["name", "email", "phone", "loc", "service", "date"];
     const t: Record<string, boolean> = {};
     required.forEach((r) => (t[r] = true));
     setTouched(t);
-    if (required.every((r) => vals[r])) setSent(true);
+    if (!required.every((r) => vals[r])) return;
+
+    setStatus("loading");
+    // TODO: replace with real API call. Simulated result below.
+    try {
+      await new Promise((res) => setTimeout(res, 1400));
+      // Simulate success (swap for actual response handling later)
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
+
+  const sent = status === "success";
 
   return (
     <SiteLayout>
@@ -90,27 +97,32 @@ function ContactPage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(100px, 14vw, 160px)",
-          paddingBottom: "clamp(60px, 10vw, 100px)",
+          paddingTop: "clamp(88px, 12vw, 130px)",
+          paddingBottom: "clamp(48px, 7vw, 80px)",
           paddingLeft: "5%",
           paddingRight: "5%",
-          background: "linear-gradient(135deg, #1A1208 0%, #2A1F12 50%, #1A1208 100%)",
         }}
       >
-        <Particles count={10} />
+        <video
+          src={contactVideo.url}
+          autoPlay muted loop playsInline
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: -2 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(18,13,6,0.55) 0%, rgba(18,13,6,0.3) 45%, rgba(18,13,6,0.9) 100%)", zIndex: -1 }} />
+        <Particles count={8} />
         <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <Reveal>
-            <span className="eyebrow" style={{ color: "#C9A456" }}>Reserve · Inquire · Visit</span>
+            <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 12 }}>Reserve · Inquire · Visit</span>
           </Reveal>
-          <Reveal delay={100}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 7vw, 5.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
+          <Reveal delay={80}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 5.5vw, 4.4rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.05, color: "#FAF7F2", margin: "0 0 14px" }}>
               Our{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Studios.</em>
             </h1>
           </Reveal>
-          <Reveal delay={200}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "rgba(250,247,242,0.8)", maxWidth: 520, margin: "20px auto 0", lineHeight: 1.85 }}>
-              Four ateliers across Bangalore. One uncompromising standard. Speak with our concierge or reserve through our booking portal.
+          <Reveal delay={160}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.94rem", color: "rgba(250,247,242,0.85)", maxWidth: 520, margin: "0 auto", lineHeight: 1.8 }}>
+              Four ateliers across Bangalore. One uncompromising standard.
             </p>
           </Reveal>
         </div>
@@ -170,21 +182,25 @@ function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "10px 18px",
+                      borderRadius: 6,
+                      background: "#1A1208",
+                      color: "#F3EDE4",
                       fontFamily: "var(--font-sans)",
                       fontSize: "0.62rem",
                       letterSpacing: "0.25em",
                       textTransform: "uppercase",
-                      color: "#C9A456",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 6,
+                      border: "1px solid #1A1208",
                     }}
                   >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                       <circle cx="12" cy="10" r="3" />
                     </svg>
-                    View on Map →
+                    View on Map
                   </a>
                 </div>
               </Reveal>
@@ -243,7 +259,7 @@ function ContactPage() {
       </section>
 
       {/* ===== BOOKING PORTAL ===== */}
-      <section className="section-pad" style={{ background: "#FAF7F2" }}>
+      <section id="booking-form" className="section-pad" style={{ background: "#FAF7F2", scrollMarginTop: 100 }}>
         <div style={{ maxWidth: 880, margin: "0 auto" }}>
           <Reveal>
             <div
@@ -332,9 +348,27 @@ function ContactPage() {
                     <label htmlFor="notes">Notes for your artist (optional)</label>
                   </div>
 
-                  <button type="submit" className="btn-primary" style={{ width: "100%", marginTop: 24 }}>
-                    ✦ Reserve My Visit →
+                  <button
+                    type="submit"
+                    className="btn-primary"
+                    style={{ width: "100%", marginTop: 24, opacity: status === "loading" ? 0.75 : 1, cursor: status === "loading" ? "wait" : "pointer" }}
+                    disabled={status === "loading"}
+                  >
+                    {status === "loading" ? (
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+                        <span style={{ display: "inline-block", width: 12, height: 12, border: "2px solid rgba(26,18,8,0.25)", borderTopColor: "#1A1208", borderRadius: "50%", animation: "tnr-spin 0.8s linear infinite" }} />
+                        Sending your request…
+                      </span>
+                    ) : (
+                      <>✦ Reserve My Visit →</>
+                    )}
                   </button>
+
+                  {status === "error" && (
+                    <p style={{ marginTop: 14, textAlign: "center", fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "#8B4A3E", background: "rgba(139,74,62,0.08)", border: "1px solid rgba(139,74,62,0.25)", padding: "10px 14px", borderRadius: 6 }}>
+                      Something went wrong — please try again.
+                    </p>
+                  )}
 
                   <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.78rem", color: "#A89880", textAlign: "center", marginTop: 16 }}>
                     By submitting, you agree to our{" "}
@@ -354,7 +388,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <PageFooterNav nextTo="/faq" nextLabel="Visit FAQ →" teaser="Have questions? Find answers to common inquiries." />
+      <PageFooterNav nextTo="/faq" nextLabel="Visit FAQ →" teaser={"Have questions? Find answers to common inquiries."} pageIndex={4} />
     </SiteLayout>
   );
 }

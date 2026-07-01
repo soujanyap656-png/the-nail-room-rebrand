@@ -186,31 +186,8 @@ function FAQPage() {
         </div>
       </section>
 
-      {/* ===== STILL HAVE QUESTIONS ===== */}
-      <section className="section-pad" style={{ background: "#F3EDE4" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-          <Reveal>
-            <span className="eyebrow">Still Have Questions?</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#1A1208", fontWeight: 400, fontStyle: "italic", marginTop: 8 }}>
-              We're <em className="gradient-text" style={{ fontFamily: "var(--font-serif)" }}>Here to Help.</em>
-            </h2>
-            <GoldDivider />
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "#5C4A35", lineHeight: 1.85, marginBottom: 28 }}>
-              Our concierge team is available to answer any questions about services, booking, or studio policies.
-            </p>
-            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link to="/contact" className="btn-primary">
-                Contact Us →
-              </Link>
-              <a href="mailto:hello@nailroombangalore.com" className="btn-outline-gold">
-                Email Concierge
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
-      <PageFooterNav nextTo="/terms" nextLabel="Terms of Service →" teaser="Review our policies, guarantees, and service terms." />
+      <PageFooterNav nextTo="/terms" nextLabel="Terms of Service →" teaser={"Review our policies, guarantees, and service terms."} pageIndex={5} />
     </SiteLayout>
   );
 }
