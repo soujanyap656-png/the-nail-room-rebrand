@@ -58,28 +58,28 @@ function FAQPage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(60px, 9vw, 110px)",
-          paddingBottom: "clamp(60px, 10vw, 120px)",
+          paddingTop: "clamp(100px, 14vw, 160px)",
+          paddingBottom: "clamp(60px, 10vw, 100px)",
           paddingLeft: "5%",
           paddingRight: "5%",
           background: "linear-gradient(135deg, #1A1208 0%, #2A1F12 50%, #1A1208 100%)",
         }}
       >
         <Particles count={10} />
-        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <Reveal>
-            <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 10, display: "block" }}>Frequently Asked</span>
+            <span className="eyebrow" style={{ color: "#C9A456" }}>Frequently Asked</span>
           </Reveal>
-          <Reveal delay={80}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.7rem, 5vw, 3.8rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
+          <Reveal delay={100}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 7vw, 5.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
               Your{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Questions,</em>
               <br />
               Answered.
             </h1>
           </Reveal>
-          <Reveal delay={160}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.92rem", color: "rgba(250,247,242,0.8)", maxWidth: 440, margin: "10px auto 0", lineHeight: 1.85 }}>
+          <Reveal delay={200}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "rgba(250,247,242,0.8)", maxWidth: 480, margin: "20px auto 0", lineHeight: 1.85 }}>
               Everything you need to know before your visit.
             </p>
           </Reveal>
@@ -87,7 +87,7 @@ function FAQPage() {
       </section>
 
       {/* ===== FAQ ACCORDION ===== */}
-      <section className="section-pad" style={{ background: "#FAF7F2", paddingTop: 56 }}>
+      <section className="section-pad" style={{ background: "#FAF7F2", paddingTop: 60 }}>
         <div style={{ maxWidth: 920, margin: "0 auto" }}>
           {FAQ.map((f, i) => {
             const open = openIdx === i;
@@ -114,21 +114,21 @@ function FAQPage() {
                       justifyContent: "space-between",
                       alignItems: "center",
                       gap: 16,
-                      padding: "26px 28px",
+                      padding: "28px 32px",
                       background: "transparent",
                       border: "none",
                       cursor: "pointer",
                       textAlign: "left",
                     }}
                   >
-                    <span style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
+                    <span style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
                       <span
                         style={{
                           fontFamily: "var(--font-serif)",
-                          fontSize: "0.85rem",
+                          fontSize: "0.9rem",
                           color: "#C9A456",
                           fontWeight: 400,
-                          minWidth: 28,
+                          minWidth: 32,
                           flexShrink: 0,
                         }}
                       >
@@ -138,7 +138,7 @@ function FAQPage() {
                         style={{
                           fontFamily: "var(--font-display)",
                           fontStyle: "italic",
-                          fontSize: "clamp(1rem, 2vw, 1.25rem)",
+                          fontSize: "clamp(1.1rem, 2vw, 1.35rem)",
                           color: "#1A1208",
                           fontWeight: 400,
                           lineHeight: 1.4,
@@ -150,7 +150,7 @@ function FAQPage() {
                     <span
                       style={{
                         fontFamily: "var(--font-sans)",
-                        fontSize: "1.4rem",
+                        fontSize: "1.5rem",
                         color: "#C9A456",
                         transition: "transform 0.3s ease",
                         transform: open ? "rotate(45deg)" : "rotate(0)",
@@ -167,11 +167,11 @@ function FAQPage() {
                       transition: "max-height 0.4s ease",
                     }}
                   >
-                    <div style={{ padding: "0 28px 26px", paddingLeft: 70 }}>
+                    <div style={{ padding: "0 32px 28px", paddingLeft: 80 }}>
                       <div
                         style={{
                           fontFamily: "var(--font-body)",
-                          fontSize: "0.9rem",
+                          fontSize: "0.92rem",
                           color: "#5C4A35",
                           lineHeight: 1.85,
                         }}
@@ -186,7 +186,31 @@ function FAQPage() {
         </div>
       </section>
 
-      <PageFooterNav nextTo="/terms" nextLabel="Terms of Service →" teaser="Review our policies, guarantees, and service terms." pageNumber={4} totalPages={6} />
+      {/* ===== STILL HAVE QUESTIONS ===== */}
+      <section className="section-pad" style={{ background: "#F3EDE4" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+          <Reveal>
+            <span className="eyebrow">Still Have Questions?</span>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#1A1208", fontWeight: 400, fontStyle: "italic", marginTop: 8 }}>
+              We're <em className="gradient-text" style={{ fontFamily: "var(--font-serif)" }}>Here to Help.</em>
+            </h2>
+            <GoldDivider />
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "#5C4A35", lineHeight: 1.85, marginBottom: 28 }}>
+              Our concierge team is available to answer any questions about services, booking, or studio policies.
+            </p>
+            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link to="/contact" className="btn-primary">
+                Contact Us →
+              </Link>
+              <a href="mailto:hello@nailroombangalore.com" className="btn-outline-gold">
+                Email Concierge
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <PageFooterNav nextTo="/terms" nextLabel="Terms of Service →" teaser="Review our policies, guarantees, and service terms." />
     </SiteLayout>
   );
 }

@@ -67,26 +67,26 @@ function PrivacyPage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(60px, 9vw, 110px)",
-          paddingBottom: "clamp(60px, 10vw, 120px)",
+          paddingTop: "clamp(100px, 14vw, 160px)",
+          paddingBottom: "clamp(60px, 10vw, 100px)",
           paddingLeft: "5%",
           paddingRight: "5%",
           background: "linear-gradient(135deg, #1A1208 0%, #2A1F12 50%, #1A1208 100%)",
         }}
       >
         <Particles count={10} />
-        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <Reveal>
-            <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 10, display: "block" }}>Legal · Effective January 2026</span>
+            <span className="eyebrow" style={{ color: "#C9A456" }}>Legal · Effective January 2026</span>
           </Reveal>
-          <Reveal delay={80}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.7rem, 5vw, 3.8rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
+          <Reveal delay={100}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 7vw, 5.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
               Privacy{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Policy.</em>
             </h1>
           </Reveal>
-          <Reveal delay={160}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.92rem", color: "rgba(250,247,242,0.8)", maxWidth: 480, margin: "10px auto 0", lineHeight: 1.85 }}>
+          <Reveal delay={200}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "rgba(250,247,242,0.8)", maxWidth: 520, margin: "20px auto 0", lineHeight: 1.85 }}>
               Your trust is the foundation of our atelier. Here is precisely how we earn and keep it.
             </p>
           </Reveal>
@@ -94,15 +94,15 @@ function PrivacyPage() {
       </section>
 
       {/* ===== PRIVACY CONTENT ===== */}
-      <section className="section-pad" style={{ background: "#FAF7F2", paddingTop: 56 }}>
+      <section className="section-pad" style={{ background: "#FAF7F2", paddingTop: 60 }}>
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
-          <div style={{ display: "grid", gap: 18 }}>
+          <div style={{ display: "grid", gap: 20 }}>
             {SECTIONS.map((s, i) => (
               <Reveal key={s.t} delay={i * 40}>
                 <article
                   className="glass-card"
                   style={{
-                    padding: "clamp(26px, 3.5vw, 36px)",
+                    padding: "clamp(28px, 4vw, 40px)",
                     position: "relative",
                     overflow: "hidden",
                   }}
@@ -111,10 +111,10 @@ function PrivacyPage() {
                   <h2
                     style={{
                       fontFamily: "var(--font-serif)",
-                      fontSize: "clamp(1.1rem, 2.2vw, 1.35rem)",
+                      fontSize: "clamp(1.15rem, 2.5vw, 1.5rem)",
                       color: "#C9A456",
                       fontWeight: 400,
-                      marginBottom: 14,
+                      marginBottom: 16,
                     }}
                   >
                     {s.t}
@@ -122,7 +122,7 @@ function PrivacyPage() {
                   <p
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: "0.9rem",
+                      fontSize: "0.92rem",
                       color: "#5C4A35",
                       lineHeight: 1.85,
                     }}
@@ -135,7 +135,32 @@ function PrivacyPage() {
         </div>
       </section>
 
-      <PageFooterNav nextTo="/" nextLabel="Return Home →" teaser="Begin your journey at The Nail Room." pageNumber={6} totalPages={6} />
+      {/* ===== CONTACT CTA ===== */}
+      <section className="section-pad" style={{ background: "#F3EDE4" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+          <Reveal>
+            <span className="eyebrow">Have Questions?</span>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#1A1208", fontWeight: 400, fontStyle: "italic", marginTop: 8 }}>
+              Your Privacy{" "}
+              <em className="gradient-text" style={{ fontFamily: "var(--font-serif)" }}>Matters.</em>
+            </h2>
+            <GoldDivider />
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "#5C4A35", lineHeight: 1.85, marginBottom: 28 }}>
+              If you have any questions about how we handle your data, email our concierge team.
+            </p>
+            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link to="/contact" className="btn-primary">
+                Contact Us →
+              </Link>
+              <a href="mailto:hello@nailroombangalore.com" className="btn-outline-gold">
+                Email Concierge
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <PageFooterNav nextTo="/" nextLabel="Return Home →" teaser="Begin your journey at The Nail Room." />
     </SiteLayout>
   );
 }

@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { ChatAssistant } from "./ChatAssistant";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
@@ -10,7 +9,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <Header />
       <main style={{ paddingTop: 72 }}>{children}</main>
       <Footer />
-      <ChatAssistant />
     </div>
   );
 }
@@ -79,29 +77,17 @@ export function PageFooterNav({
   nextTo,
   nextLabel,
   teaser,
-  pageNumber,
-  totalPages = 6,
 }: {
   nextTo: string;
   nextLabel: string;
   teaser: string;
-  pageNumber?: number;
-  totalPages?: number;
 }) {
-  const pageStr = pageNumber ? String(pageNumber).padStart(2, "0") : null;
-  const totalStr = totalPages ? String(totalPages).padStart(2, "0") : null;
-
   return (
     <div style={{
       background: "linear-gradient(135deg, #C9A456 0%, #E8CC8A 50%, #C9A456 100%)",
       padding: "70px 5%",
       textAlign: "center",
     }}>
-      {pageNumber && (
-        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.55rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(18,13,6,0.45)", marginBottom: 16, lineHeight: 1 }}>
-          {pageStr} / {totalStr}
-        </p>
-      )}
       <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "rgba(18,13,6,0.55)", marginBottom: 12, lineHeight: 1 }}>
         Continue Your Journey
       </p>
@@ -112,7 +98,7 @@ export function PageFooterNav({
         {nextLabel} →
       </Link>
       <div style={{ marginTop: 16 }}>
-        <Link to="/contact#booking-form" className="btn-dark-outline" style={{ display: "inline-flex" }}>
+        <Link to="/contact" className="btn-dark-outline" style={{ display: "inline-flex" }}>
           Book an Appointment →
         </Link>
       </div>
