@@ -103,7 +103,7 @@ export function Header() {
 
           {/* Reserve CTA */}
           <Link
-            to="/contact"
+            to="/contact#booking-form"
             className="hide-mobile"
             style={{
               flexShrink: 0,
@@ -207,7 +207,7 @@ export function Header() {
         </nav>
 
         <Link
-          to="/contact"
+          to="/contact#booking-form"
           className="btn-primary"
           style={{ marginTop: "auto", textAlign: "center" }}
         >

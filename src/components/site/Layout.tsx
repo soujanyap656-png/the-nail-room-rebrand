@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { ChatAssistant } from "./ChatAssistant";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
@@ -9,6 +10,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <Header />
       <main style={{ paddingTop: 72 }}>{children}</main>
       <Footer />
+      <ChatAssistant />
     </div>
   );
 }

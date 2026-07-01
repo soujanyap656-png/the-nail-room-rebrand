@@ -113,7 +113,7 @@ export function Footer() {
             <ul style={{ listStyle: "none", padding: 0 }}>
               {SERVICES.map((s) => (
                 <li key={s}>
-                  <Link to="/contact" style={footerLinkStyle}
+                  <Link to="/contact#booking-form" style={footerLinkStyle}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "#FAF7F2")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "#A89880")}
                   >

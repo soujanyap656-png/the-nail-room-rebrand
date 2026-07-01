@@ -58,7 +58,7 @@ function FAQPage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(80px, 12vw, 140px)",
+          paddingTop: "clamp(60px, 9vw, 110px)",
           paddingBottom: "clamp(60px, 10vw, 120px)",
           paddingLeft: "5%",
           paddingRight: "5%",
@@ -71,7 +71,7 @@ function FAQPage() {
             <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 10, display: "block" }}>Frequently Asked</span>
           </Reveal>
           <Reveal delay={80}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 6vw, 4.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.7rem, 5vw, 3.8rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
               Your{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Questions,</em>
               <br />
@@ -79,7 +79,7 @@ function FAQPage() {
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.92rem", color: "rgba(250,247,242,0.8)", maxWidth: 440, margin: "16px auto 0", lineHeight: 1.85 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.92rem", color: "rgba(250,247,242,0.8)", maxWidth: 440, margin: "10px auto 0", lineHeight: 1.85 }}>
               Everything you need to know before your visit.
             </p>
           </Reveal>

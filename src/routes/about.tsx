@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
 import { SiteLayout, GoldDivider, PageFooterNav, Particles } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
-import img_about from "@/assets/1782536277899.png.asset.json";
+import img_about from "@/assets/files_10795511-2026-06-30T10-38-51-766Z-2666d7e6f967f90d474f618f05c4734e copy.jpg";
+import img_hero from "@/assets/90dd1d56ddf90bc57cae53266fe54c15.jpg";
 import img_studio1 from "@/assets/008e9bedd3186f89b89a2d37fbe3316b.jpg.asset.json";
 import img_studio2 from "@/assets/334977a2195a3d43013ca3ee4b469cbb.jpg.asset.json";
 import img_studio3 from "@/assets/5dec88141837babd14a5cd4aa4e8f67f.jpg.asset.json";
@@ -99,27 +100,34 @@ function AboutGalleryPage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(80px, 12vw, 140px)",
+          paddingTop: "clamp(60px, 9vw, 110px)",
           paddingBottom: "clamp(60px, 10vw, 120px)",
           paddingLeft: "5%",
           paddingRight: "5%",
-          background: "linear-gradient(135deg, #1A1208 0%, #2A1F12 50%, #1A1208 100%)",
         }}
       >
+        <img src={img_hero} alt="" aria-hidden="true" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: -2 }} loading="eager" />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(18,13,6,0.8) 0%, rgba(18,13,6,0.5) 40%, rgba(18,13,6,0.9) 100%)", zIndex: -1 }} />
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 30%, rgba(201,164,86,0.08) 0%, transparent 60%)", zIndex: 0 }} />
         <Particles count={10} />
+
+        {/* Floating accent SVG */}
+        <svg aria-hidden="true" style={{ position: "absolute", bottom: "10%", left: "4%", opacity: 0.12, zIndex: 0, animation: "float-particle 9s ease-in infinite" }} width="50" height="100" viewBox="0 0 50 100" fill="none" stroke="#C9A456" strokeWidth="1.5">
+          <path d="M25 5 L25 70" /><rect x="15" y="70" width="20" height="25" rx="4" /><circle cx="25" cy="20" r="4" fill="#C9A456" stroke="none" />
+        </svg>
+
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <Reveal>
             <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 10, display: "block" }}>Our Story</span>
           </Reveal>
           <Reveal delay={80}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 6vw, 4.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.05, color: "#FAF7F2" }}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.9rem, 5vw, 3.8rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.05, color: "#FAF7F2" }}>
               Crafted by People.{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Trusted by Bangalore.</em>
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.92rem", color: "rgba(250,247,242,0.8)", maxWidth: 500, margin: "16px auto 0", lineHeight: 1.85 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.92rem", color: "rgba(250,247,242,0.8)", maxWidth: 500, margin: "10px auto 0", lineHeight: 1.85 }}>
               From a single studio in Jayanagar to four ateliers across Bangalore, our journey has been driven by an unwavering obsession with craft.
             </p>
           </Reveal>
@@ -140,7 +148,7 @@ function AboutGalleryPage() {
                 }}
               >
                 <img
-                  src={img_about.url}
+                  src={img_about}
                   alt="Inside The Nail Room studio"
                   style={{ width: "100%", height: "auto", display: "block" }}
                   loading="eager"

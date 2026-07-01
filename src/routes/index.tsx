@@ -186,9 +186,13 @@ function ServiceCarousel({ imgs }: { imgs: string[] }) {
 function AtelierHoursCard() {
   return (
     <div
-      className="dark-card"
       style={{
-        padding: "40px 48px",
+        background: "rgba(18,13,6,0.92)",
+        backdropFilter: "blur(20px)",
+        border: "1px solid rgba(201,164,86,0.4)",
+        borderRadius: 16,
+        boxShadow: "0 0 60px rgba(201,164,86,0.08), 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)",
+        padding: "48px 56px",
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
@@ -196,31 +200,56 @@ function AtelierHoursCard() {
       }}
     >
       <div className="card-gold-top" />
-      {/* Animated pulsing dot */}
-      <div
-        style={{
-          position: "absolute",
-          top: 20,
-          right: 20,
-          width: 12,
-          height: 12,
-          borderRadius: "50%",
-          background: "#C9A456",
-          animation: "pulse 2s ease-in-out infinite",
-        }}
-      />
-      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "#C9A456", marginBottom: 16 }}>
+
+      {/* Eyebrow */}
+      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", letterSpacing: "0.5em", textTransform: "uppercase", color: "#C9A456", marginBottom: 0 }}>
         ✦ Atelier Hours ✦
       </p>
-      <div style={{ display: "flex", gap: 20, alignItems: "center", justifyContent: "center", marginBottom: 16, flexWrap: "wrap" }}>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "rgba(250,247,242,0.85)" }}>Monday – Sunday</span>
-        <span style={{ width: 1, height: 24, background: "rgba(201,164,86,0.4)" }} />
-        <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontSize: "1.1rem", color: "#C9A456" }}>10:30 AM – 8:30 PM</span>
+
+      {/* Divider under eyebrow */}
+      <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.5), transparent)", maxWidth: 160, margin: "20px auto 28px" }} />
+
+      {/* Open Daily label with rotating ring + pulsing dot */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 18 }}>
+        <div style={{ position: "relative", width: 28, height: 28, flexShrink: 0 }}>
+          <svg width="28" height="28" viewBox="0 0 28 28" style={{ animation: "spin-slow 8s linear infinite" }}>
+            <circle cx="14" cy="14" r="12" fill="none" stroke="rgba(201,164,86,0.3)" strokeWidth="1" strokeDasharray="4 3" />
+          </svg>
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 8,
+              height: 8,
+              borderRadius: "50%",
+              background: "#C9A456",
+              animation: "pulse 2s ease-in-out infinite",
+            }}
+          />
+        </div>
+        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.85rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(250,247,242,0.85)", margin: 0 }}>
+          Open Daily
+        </p>
       </div>
-      <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.85rem", color: "rgba(250,247,242,0.6)", marginBottom: 4 }}>
+
+      {/* Large hours display — the visual hero */}
+      <p style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "clamp(1.4rem, 3vw, 1.8rem)", fontWeight: 400, color: "#E8CC8A", margin: "0 0 8px", lineHeight: 1.2 }}>
+        10:30 AM – 8:30 PM
+      </p>
+      <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "1rem", color: "rgba(250,247,242,0.7)", margin: "0 0 28px" }}>
+        Monday – Sunday
+      </p>
+
+      {/* Divider */}
+      <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.25), transparent)", maxWidth: 200, margin: "0 auto 24px" }} />
+
+      {/* Notes */}
+      <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "0.88rem", color: "rgba(250,247,242,0.65)", marginBottom: 8, lineHeight: 1.7 }}>
         Walk-ins welcome. Appointments recommended.
       </p>
-      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "rgba(250,247,242,0.45)" }}>
+      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", letterSpacing: "0.1em", color: "rgba(250,247,242,0.4)" }}>
         Working hours may vary on public holidays.
       </p>
     </div>
@@ -235,7 +264,7 @@ function HomePage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(80px, 12vw, 140px)",
+          paddingTop: "clamp(60px, 9vw, 110px)",
           paddingBottom: "clamp(60px, 10vw, 120px)",
           paddingLeft: "5%",
           paddingRight: "5%",
@@ -251,18 +280,46 @@ function HomePage() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(18,13,6,0.75) 0%, rgba(18,13,6,0.35) 40%, rgba(18,13,6,0.85) 100%)", zIndex: -1 }} />
         <Particles count={12} />
 
+        {/* Floating accent SVGs */}
+        <svg aria-hidden="true" style={{ position: "absolute", top: "20%", left: "3%", opacity: 0.12, zIndex: 0, animation: "float-particle 9s ease-in infinite" }} width="60" height="120" viewBox="0 0 60 120" fill="none" stroke="#C9A456" strokeWidth="1.5">
+          <rect x="20" y="10" width="20" height="80" rx="10" />
+          <rect x="15" y="88" width="30" height="20" rx="4" />
+          <circle cx="30" cy="30" r="6" fill="#C9A456" stroke="none" />
+        </svg>
+        <svg aria-hidden="true" style={{ position: "absolute", bottom: "15%", right: "4%", opacity: 0.1, zIndex: 0, animation: "float-particle 10s ease-in infinite 1.5s" }} width="80" height="80" viewBox="0 0 80 80" fill="#C9A456">
+          <circle cx="10" cy="10" r="2" /><circle cx="30" cy="20" r="1.5" /><circle cx="50" cy="15" r="2.5" /><circle cx="70" cy="25" r="1" /><circle cx="20" cy="40" r="1.5" /><circle cx="45" cy="50" r="2" /><circle cx="65" cy="45" r="1" /><circle cx="15" cy="65" r="2.5" /><circle cx="55" cy="70" r="1.5" />
+        </svg>
+
+        {/* Top-right tabs */}
+        <div className="hero-tabs" style={{ position: "absolute", top: 88, right: "5%", display: "flex", gap: 12, zIndex: 2 }}>
+          <div style={{ backdropFilter: "blur(12px)", background: "rgba(18,13,6,0.5)", border: "1px solid rgba(201,164,86,0.3)", borderRadius: 100, padding: "10px 18px", display: "flex", alignItems: "center", gap: 8 }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A456" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+            <div>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(250,247,242,0.7)", margin: 0, lineHeight: 1 }}>Working Time</p>
+              <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "0.78rem", color: "#C9A456", margin: 0, lineHeight: 1.2 }}>10:30 AM – 8:30 PM</p>
+            </div>
+          </div>
+          <a href="tel:+917204184033" style={{ backdropFilter: "blur(12px)", background: "rgba(18,13,6,0.5)", border: "1px solid rgba(201,164,86,0.3)", borderRadius: 100, padding: "10px 18px", display: "flex", alignItems: "center", gap: 8, textDecoration: "none", transition: "border-color 0.3s ease" }} onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#C9A456"; }} onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,164,86,0.3)"; }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A456" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+            <div>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(250,247,242,0.7)", margin: 0, lineHeight: 1 }}>Get in Touch</p>
+              <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "0.78rem", color: "#C9A456", margin: 0, lineHeight: 1.2 }}>+91 72041 84033</p>
+            </div>
+          </a>
+        </div>
+
         <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <Reveal>
-            <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 12, display: "block" }}>Bangalore's Nail Atelier</span>
+            <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 10, display: "block" }}>Bangalore's Nail Atelier</span>
           </Reveal>
           <Reveal delay={80}>
             <h1 style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.2rem, 6vw, 5rem)",
+              fontSize: "clamp(1.9rem, 5vw, 4.2rem)",
               fontWeight: 400,
               fontStyle: "italic",
               lineHeight: 1.05,
-              marginBottom: 16,
+              marginBottom: 12,
               color: "#FAF7F2"
             }}>
               The Art of the{" "}
@@ -276,7 +333,7 @@ function HomePage() {
               fontSize: "0.92rem",
               color: "rgba(250,247,242,0.85)",
               maxWidth: 480,
-              margin: "0 auto 24px",
+              margin: "0 auto 16px",
               lineHeight: 1.8
             }}>
               Four studios across Bangalore. One uncompromising standard. Handcrafted nail art, clinical precision, and an atmosphere designed to make you feel entirely seen.
@@ -289,10 +346,12 @@ function HomePage() {
             </div>
           </Reveal>
           <Reveal delay={320}>
-            <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.4), transparent)", maxWidth: 200, margin: "28px auto 0" }} />
+            <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(201,164,86,0.4), transparent)", maxWidth: 200, margin: "24px auto 0" }} />
           </Reveal>
         </div>
       </section>
+
+      <style>{`@media (max-width: 768px) { .hero-tabs { display: none !important; } }`}</style>
 
       {/* ===== AS FEATURED IN ===== */}
       <section style={{ background: "#EDE5D8", padding: "52px 5%", borderTop: "1px solid rgba(201,164,86,0.18)", borderBottom: "1px solid rgba(201,164,86,0.18)" }}>

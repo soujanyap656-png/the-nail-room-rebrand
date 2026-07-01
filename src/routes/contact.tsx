@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent, useEffect } from "react";
 import { SiteLayout, GoldDivider, PageFooterNav, Particles } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
+import videoHero from "@/assets/gemini_generated_video_6eb0a63f.mp4";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -115,26 +116,41 @@ function ContactPage() {
         style={{
           position: "relative",
           overflow: "hidden",
-          paddingTop: "clamp(80px, 12vw, 140px)",
+          paddingTop: "clamp(60px, 9vw, 110px)",
           paddingBottom: "clamp(60px, 10vw, 120px)",
           paddingLeft: "5%",
           paddingRight: "5%",
-          background: "linear-gradient(135deg, #1A1208 0%, #2A1F12 50%, #1A1208 100%)",
         }}
       >
+        <video
+          src={videoHero}
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: -2 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(18,13,6,0.8) 0%, rgba(18,13,6,0.5) 40%, rgba(18,13,6,0.9) 100%)", zIndex: -1 }} />
         <Particles count={10} />
+
+        {/* Floating accent SVG */}
+        <svg aria-hidden="true" style={{ position: "absolute", top: "15%", right: "5%", opacity: 0.12, zIndex: 0, animation: "float-particle 10s ease-in infinite" }} width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C9A456" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+        </svg>
+
         <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <Reveal>
             <span className="eyebrow" style={{ color: "#C9A456", marginBottom: 10, display: "block" }}>Reserve · Inquire · Visit</span>
           </Reveal>
           <Reveal delay={80}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 6vw, 4.5rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.7rem, 5vw, 3.8rem)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.0, color: "#FAF7F2" }}>
               Our{" "}
               <em className="shimmer-text" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}>Studios.</em>
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.92rem", color: "rgba(250,247,242,0.8)", maxWidth: 480, margin: "16px auto 0", lineHeight: 1.85 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.92rem", color: "rgba(250,247,242,0.8)", maxWidth: 480, margin: "10px auto 0", lineHeight: 1.85 }}>
               Four ateliers across Bangalore. One uncompromising standard. Speak with our concierge or reserve through our booking portal.
             </p>
           </Reveal>
