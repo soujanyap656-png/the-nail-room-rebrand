@@ -259,7 +259,7 @@ function ContactPage() {
       </section>
 
       {/* ===== BOOKING PORTAL ===== */}
-      <section className="section-pad" style={{ background: "#FAF7F2" }}>
+      <section id="booking-form" className="section-pad" style={{ background: "#FAF7F2", scrollMarginTop: 100 }}>
         <div style={{ maxWidth: 880, margin: "0 auto" }}>
           <Reveal>
             <div
